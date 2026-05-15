@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "lunardate": {
+      "LUNARDATE00": {
+        "gregorian_date": "s14",
+        "lunar_date": {}
+      },
+      "LUNARDATE01": {
+        "gregorian_date": "s28",
+        "lunar_date": {}
+      },
+      "LUNARDATE02": {
+        "gregorian_date": "s3c",
+        "lunar_date": {}
+      }
+    }
+  },
+  "new": {
+    "lunardate": {
+      "lunardate_ref01": {
+        "gregorian_date": "s50",
+        "lunar_date": {}
+      }
+    }
+  }
+}

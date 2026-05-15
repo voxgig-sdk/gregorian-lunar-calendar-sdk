@@ -1,0 +1,198 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Gregorian Lunar Calendar",
+    "description": "This API provides conversion between Gregorian and Lunar dates. Users can fetch the Lunar date corresponding to a specified Gregorian date through a simple query.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Hong Kong Observatory",
+      "email": "mailbox@hko.gov.hk",
+      "url": "https://data.gov.hk/en-data/dataset/hk-hko-rss-gregorian-lunar-calendar-conversion-table"
+    },
+    "license": {
+      "name": "Hong Kong Government Open Data License",
+      "url": "https://data.gov.hk/en/terms-and-conditions"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://data.weather.gov.hk/weatherAPI",
+      "description": "Hong Kong Observatory Weather API"
+    }
+  ],
+  "paths": {
+    "/opendata/lunardate.php": {
+      "get": {
+        "summary": "Get Lunar Date Conversion",
+        "description": "Convert Gregorian date to Lunar date. Returns the Lunar calendar date corresponding to a specified Gregorian date.",
+        "operationId": "getLunarDate",
+        "tags": [
+          "Calendar Conversion"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Gregorian date in YYYYMMDD format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{8}$",
+              "example": "20240101"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with Lunar date information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LunarDateResponse"
+                },
+                "example": {
+                  "gregorianDate": "2024-01-01",
+                  "lunarDate": {
+                    "year": "癸卯",
+                    "month": "十一月",
+                    "day": "二十",
+                    "yearCycle": 40,
+                    "zodiac": "兔"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid date format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Invalid date format",
+                  "message": "Date must be in YYYYMMDD format"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Date not available in conversion table",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Date not found",
+                  "message": "The requested date is not available in the conversion table"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "error": "Internal server error",
+                  "message": "An unexpected error occurred"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LunarDateResponse": {
+        "type": "object",
+        "description": "Response containing Gregorian to Lunar date conversion",
+        "properties": {
+          "gregorianDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The Gregorian date in YYYY-MM-DD format",
+            "example": "2024-01-01"
+          },
+          "lunarDate": {
+            "type": "object",
+            "description": "Lunar calendar date information",
+            "properties": {
+              "year": {
+                "type": "string",
+                "description": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
+                "example": "癸卯"
+              },
+              "month": {
+                "type": "string",
+                "description": "Lunar month in Chinese",
+                "example": "十一月"
+              },
+              "day": {
+                "type": "string",
+                "description": "Lunar day in Chinese",
+                "example": "二十"
+              },
+              "yearCycle": {
+                "type": "integer",
+                "description": "Year in the 60-year cycle",
+                "example": 40
+              },
+              "zodiac": {
+                "type": "string",
+                "description": "Chinese zodiac animal",
+                "example": "兔"
+              },
+              "isLeapMonth": {
+                "type": "boolean",
+                "description": "Indicates if the lunar month is a leap month",
+                "example": false
+              }
+            }
+          }
+        },
+        "required": [
+          "gregorianDate",
+          "lunarDate"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "description": "Error response",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code or type",
+            "example": "Invalid request"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message",
+            "example": "The requested parameter is invalid"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Calendar Conversion",
+      "description": "Operations for converting between Gregorian and Lunar calendar dates"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation (PDF)",
+    "url": "https://data.weather.gov.hk/weatherAPI/doc/HKO_Open_Data_API_Documentation.pdf"
+  }
+}

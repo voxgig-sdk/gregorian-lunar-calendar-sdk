@@ -1,0 +1,60 @@
+# Entity: lunardate
+
+main: kit: entity: lunardate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gregorian_date"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "lunar_date"
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "lunardate"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "20240101"
+                kind: "query"
+                name: "date"
+                orig: "date"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/opendata/lunardate.php"
+          parts: [
+            "opendata"
+            "lunardate.php"
+          ]
+          select: {
+            exist: [
+              "date"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

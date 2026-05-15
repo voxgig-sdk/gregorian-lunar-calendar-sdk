@@ -1,0 +1,29 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "mailbox@hko.gov.hk"
+        name: "Hong Kong Observatory"
+        url: "https://data.gov.hk/en-data/dataset/hk-hko-rss-gregorian-lunar-calendar-conversion-table"
+      }
+      description: "This API provides conversion between Gregorian and Lunar dates. Users can fetch the Lunar date corresponding to a specified Gregorian date through a simple query."
+      license: {
+        name: "Hong Kong Government Open Data License"
+        url: "https://data.gov.hk/en/terms-and-conditions"
+      }
+      servers: [
+        {
+          description: "Hong Kong Observatory Weather API"
+          url: "https://data.weather.gov.hk/weatherAPI"
+        }
+      ]
+      title: "Gregorian Lunar Calendar"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
