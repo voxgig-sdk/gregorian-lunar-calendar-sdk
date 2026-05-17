@@ -3,15 +3,18 @@
     "lunardate": {
       "LUNARDATE00": {
         "gregorian_date": "s14",
-        "lunar_date": {}
+        "lunar_date": {},
+        "id": "LUNARDATE00"
       },
       "LUNARDATE01": {
         "gregorian_date": "s28",
-        "lunar_date": {}
+        "lunar_date": {},
+        "id": "LUNARDATE01"
       },
       "LUNARDATE02": {
         "gregorian_date": "s3c",
-        "lunar_date": {}
+        "lunar_date": {},
+        "id": "LUNARDATE02"
       }
     }
   },

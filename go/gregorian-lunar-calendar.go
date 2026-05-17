@@ -1,10 +1,10 @@
 package voxgiggregorianlunarcalendarsdk
 
 import (
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/entity"
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/feature"
-	_ "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/utility"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/entity"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/feature"
+	_ "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

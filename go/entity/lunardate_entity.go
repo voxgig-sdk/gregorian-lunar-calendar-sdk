@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/utility/struct"
 )
 
 type LunardateEntity struct {

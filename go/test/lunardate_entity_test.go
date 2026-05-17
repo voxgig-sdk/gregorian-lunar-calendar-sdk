@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk"
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
+	sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/utility/struct"
 )
 
 func TestLunardateEntity(t *testing.T) {

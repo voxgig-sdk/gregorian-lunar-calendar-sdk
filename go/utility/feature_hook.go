@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 )
 
 const headerAuth = "authorization"

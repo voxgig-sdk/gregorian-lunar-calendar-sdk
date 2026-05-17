@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk"
-	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/core"
+	sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go"
+	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 )
 
 func TestLunardateDirect(t *testing.T) {
