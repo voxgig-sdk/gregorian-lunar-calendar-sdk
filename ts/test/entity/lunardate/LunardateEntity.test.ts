@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID': idmap,
     'GREGORIAN_LUNAR_CALENDAR_TEST_LIVE': 'FALSE',
     'GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN': 'FALSE',
-    'GREGORIAN_LUNAR_CALENDAR_APIKEY': 'NONE',
   })
 
   idmap = env['GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new GregorianLunarCalendarSDK(merge([
       {
-        apikey: env.GREGORIAN_LUNAR_CALENDAR_APIKEY,
       },
       extra
     ]))

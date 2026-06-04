@@ -67,14 +67,12 @@ def lunardate_direct_setup(mockres)
   env = Runner.env_override({
     "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID" => {},
     "GREGORIANLUNARCALENDAR_TEST_LIVE" => "FALSE",
-    "GREGORIANLUNARCALENDAR_APIKEY" => "NONE",
   })
 
   live = env["GREGORIANLUNARCALENDAR_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["GREGORIANLUNARCALENDAR_APIKEY"],
     }
     client = GregorianLunarCalendarSDK.new(merged_opts)
     return {
