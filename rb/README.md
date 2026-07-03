@@ -10,13 +10,13 @@ The Ruby SDK for the GregorianLunarCalendar API — an entity-oriented client us
 
 ## Install
 ```bash
-gem install gregorian-lunar-calendar-sdk
+gem install voxgig-sdk-gregorian-lunar-calendar
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "gregorian-lunar-calendar-sdk"
+gem "voxgig-sdk-gregorian-lunar-calendar"
 ```
 
 Then run:

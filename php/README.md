@@ -10,7 +10,7 @@ The PHP SDK for the GregorianLunarCalendar API — an entity-oriented client usi
 
 ## Install
 ```bash
-composer require voxgig/gregorian-lunar-calendar-sdk
+composer require voxgig-sdk/gregorian-lunar-calendar
 ```
 
 

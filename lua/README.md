@@ -10,7 +10,7 @@ The Lua SDK for the GregorianLunarCalendar API — an entity-oriented client usi
 
 ## Install
 ```bash
-luarocks install gregorian-lunar-calendar-sdk
+luarocks install voxgig-sdk-gregorian-lunar-calendar
 ```
 
 If the module is not yet published, add the source directory to

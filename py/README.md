@@ -10,7 +10,7 @@ The Python SDK for the GregorianLunarCalendar API — an entity-oriented client 
 
 ## Install
 ```bash
-pip install gregorian-lunar-calendar-sdk
+pip install voxgig-sdk-gregorian-lunar-calendar
 ```
 
 Or install from source:

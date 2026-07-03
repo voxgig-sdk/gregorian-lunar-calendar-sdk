@@ -8,12 +8,14 @@ source = {
   dir = "gregorian-lunar-calendar-sdk/lua"
 }
 description = {
-  summary = "GregorianLunarCalendar SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Gregorian Lunar Calendar public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk",
+  issues_url = "https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "gregorian-lunar-calendar" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

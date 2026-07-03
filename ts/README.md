@@ -10,7 +10,7 @@ The TypeScript SDK for the GregorianLunarCalendar API — a type-safe, entity-or
 
 ## Install
 ```bash
-npm install gregorian-lunar-calendar
+npm install @voxgig-sdk/gregorian-lunar-calendar
 ```
 ## Tutorial: your first API call
 
