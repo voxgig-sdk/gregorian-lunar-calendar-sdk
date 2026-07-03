@@ -1,6 +1,11 @@
 # GregorianLunarCalendar Python SDK
 
-The Python SDK for the GregorianLunarCalendar API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the GregorianLunarCalendar API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
 
-client = GregorianLunarCalendarSDK({})
+client = GregorianLunarCalendarSDK({
+    "apikey": os.environ.get("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
+})
 ```
 
 ### 3. Load a lunardate
 
 ```python
-result, err = client.Lunardate(None).load({"id": "example_id"}, None)
+result, err = client.Lunardate().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -79,11 +87,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = GregorianLunarCalendarSDK.test(None, None)
+client = GregorianLunarCalendarSDK.test()
 
-result, err = client.GregorianLunarCalendar(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.GregorianLunarCalendar().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -114,6 +120,7 @@ Create a `.env.local` file at the project root:
 
 ```
 GREGORIAN-LUNAR-CALENDAR_TEST_LIVE=TRUE
+GREGORIAN-LUNAR-CALENDAR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -137,6 +144,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

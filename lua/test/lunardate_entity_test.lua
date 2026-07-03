@@ -91,6 +91,7 @@ function lunardate_basic_setup(extra)
     ["GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID"] = idmap,
     ["GREGORIANLUNARCALENDAR_TEST_LIVE"] = "FALSE",
     ["GREGORIANLUNARCALENDAR_TEST_EXPLAIN"] = "FALSE",
+    ["GREGORIANLUNARCALENDAR_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function lunardate_basic_setup(extra)
   if env["GREGORIANLUNARCALENDAR_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["GREGORIANLUNARCALENDAR_APIKEY"],
       },
       extra or {},
     })

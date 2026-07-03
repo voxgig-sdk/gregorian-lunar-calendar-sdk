@@ -1,20 +1,8 @@
 # GregorianLunarCalendar SDK
 
-Convert any Gregorian date to its Chinese lunar equivalent using Hong Kong Observatory open data
+Gregorian Lunar Calendar client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Gregorian Lunar Calendar
-
-This SDK wraps the Gregorian-Lunar Calendar Conversion service operated by the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/), Hong Kong's official meteorological and timekeeping authority. The service returns the Chinese lunar date that corresponds to a given Gregorian calendar date.
-
-What you get from the API:
-
-- Look up the Chinese lunar date for a specified Gregorian date via `GET /opendata/lunardate.php?date=YYYY-MM-DD`.
-- A single conversion endpoint backed by HKO's published Gregorian-Lunar conversion table.
-- Yearly-updated reference data maintained by HKO.
-
-Operational notes: the endpoint is served from `https://data.weather.gov.hk/weatherAPI` and is CORS-enabled, so it can be called directly from browsers. No API key or authentication is required. The conversion table is published in Chinese by HKO and updated on a yearly cadence.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install gregorian-lunar-calendar-sdk
 luarocks install gregorian-lunar-calendar-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { GregorianLunarCalendarSDK } from 'gregorian-lunar-calendar'
 
-const client = new GregorianLunarCalendarSDK({})
+const client = new GregorianLunarCalendarSDK({
+  apikey: process.env.GREGORIAN-LUNAR-CALENDAR_APIKEY,
+})
 
+// Load lunardate data
+const lunardate = await client.Lunardate().load({})
+console.log(lunardate.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Lunardate** | Chinese lunar date corresponding to a supplied Gregorian date, returned by `GET /opendata/lunardate.php?date=YYYY-MM-DD`. | `/opendata/lunardate.php` |
+| **Lunardate** |  | `/opendata/lunardate.php` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
 
-client = GregorianLunarCalendarSDK({})
+client = GregorianLunarCalendarSDK({
+    "apikey": os.environ.get("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
+})
 
 
 # Load a specific lunardate
-lunardate, err = client.Lunardate(None).load(
-    {"id": "example_id"}, None
-)
+lunardate, err = client.Lunardate().load({"id": "example_id"})
+print(lunardate)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ lunardate, err = client.Lunardate(None).load(
 <?php
 require_once 'gregorianlunarcalendar_sdk.php';
 
-$client = new GregorianLunarCalendarSDK([]);
+$client = new GregorianLunarCalendarSDK([
+    "apikey" => getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
+]);
 
 
 // Load a specific lunardate
-[$lunardate, $err] = $client->Lunardate(null)->load(
-    ["id" => "example_id"], null
-);
+[$lunardate, $err] = $client->Lunardate()->load(["id" => "example_id"]);
+print_r($lunardate);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new GregorianLunarCalendarSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go"
 
-client := sdk.NewGregorianLunarCalendarSDK(map[string]any{})
+client := sdk.NewGregorianLunarCalendarSDK(map[string]any{
+    "apikey": os.Getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
+})
 
+// Load lunardate data
+lunardate, err := client.Lunardate(nil).Load(map[string]any{}, nil)
+fmt.Println(lunardate)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewGregorianLunarCalendarSDK(map[string]any{})
 ```ruby
 require_relative "GregorianLunarCalendar_sdk"
 
-client = GregorianLunarCalendarSDK.new({})
+client = GregorianLunarCalendarSDK.new({
+  "apikey" => ENV["GREGORIAN-LUNAR-CALENDAR_APIKEY"],
+})
 
 
 # Load a specific lunardate
-lunardate, err = client.Lunardate(nil).load(
-  { "id" => "example_id" }, nil
-)
+lunardate, err = client.Lunardate().load({ "id" => "example_id" })
+puts lunardate
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ lunardate, err = client.Lunardate(nil).load(
 ```lua
 local sdk = require("gregorian-lunar-calendar_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
+})
 
 
 -- Load a specific lunardate
-local lunardate, err = client:Lunardate(nil):load(
-  { id = "example_id" }, nil
-)
+local lunardate, err = client:Lunardate():load({ id = "example_id" })
+print(lunardate)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.Lunardate().load({ id: 'test01' })
 ### Python
 
 ```python
-client = GregorianLunarCalendarSDK.test(None, None)
-result, err = client.Lunardate(None).load(
-    {"id": "test01"}, None
-)
+client = GregorianLunarCalendarSDK.test()
+result, err = client.Lunardate().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = GregorianLunarCalendarSDK::test(null, null);
-[$result, $err] = $client->Lunardate(null)->load(
-    ["id" => "test01"], null
-);
+$client = GregorianLunarCalendarSDK::test();
+[$result, $err] = $client->Lunardate()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Lunardate(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.Lunardate(nil).Load(
 ### Ruby
 
 ```ruby
-client = GregorianLunarCalendarSDK.test(nil, nil)
-result, err = client.Lunardate(nil).load(
-  { "id" => "test01" }, nil
-)
+client = GregorianLunarCalendarSDK.test
+result, err = client.Lunardate().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Lunardate(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Lunardate():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,16 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Gregorian Lunar Calendar
-
-- Upstream: [https://data.weather.gov.hk/weatherAPI/](https://data.weather.gov.hk/weatherAPI/)
-- API docs: [https://www.hko.gov.hk/en/abouthko/opendata_intro.htm](https://www.hko.gov.hk/en/abouthko/opendata_intro.htm)
-
-- Data is published under the Hong Kong Government's Open Data licence terms.
-- Attribution to the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/) is expected when reusing or redistributing the data.
-- Refer to the HKO website for the full terms of use covering HKO data and materials.
-- The conversion table is updated yearly by HKO.
 
 ---
 

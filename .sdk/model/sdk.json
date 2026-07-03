@@ -1,9 +1,216 @@
 {
-  "name": "gregorian-lunar-calendar",
-  "origin": "voxgig-sdk",
   "def": "gregorian-lunar-calendar_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "lunardate": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "gregorian_date",
+              "req": true,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "lunar_date",
+              "req": true,
+              "type": "`$OBJECT`"
+            }
+          ],
+          "name": "lunardate",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "query": [
+                      {
+                        "active": true,
+                        "example": "20240101",
+                        "kind": "query",
+                        "name": "date",
+                        "orig": "date",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/opendata/lunardate.php",
+                  "parts": [
+                    "opendata",
+                    "lunardate.php"
+                  ],
+                  "select": {
+                    "exist": [
+                      "date"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicLunardateFlow": {
+          "active": true,
+          "entity": "lunardate",
+          "key$": "BasicLunardateFlow",
+          "kind": "basic",
+          "name": "BasicLunardateFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "lunardate_ref01",
+                "srcdatavar": "lunardate_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {},
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-lunardate_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "info": {
         "contact": {
           "email": "mailbox@hko.gov.hk",
@@ -22,232 +229,35 @@
           }
         ],
         "title": "Gregorian Lunar Calendar",
-        "version": "1.0.0",
-        "tagline": "Convert any Gregorian date to its Chinese lunar equivalent using Hong Kong Observatory open data",
-        "homepage": "https://data.weather.gov.hk/weatherAPI/",
-        "docs_url": "https://www.hko.gov.hk/en/abouthko/opendata_intro.htm",
-        "license_short": "Hong Kong Government Open Data Licence — free reuse with attribution to the Hong Kong Observatory.",
-        "license_md": "- Data is published under the Hong Kong Government's Open Data licence terms.\n- Attribution to the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/) is expected when reusing or redistributing the data.\n- Refer to the HKO website for the full terms of use covering HKO data and materials.\n- The conversion table is updated yearly by HKO.",
-        "about_md": "This SDK wraps the Gregorian-Lunar Calendar Conversion service operated by the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/), Hong Kong's official meteorological and timekeeping authority. The service returns the Chinese lunar date that corresponds to a given Gregorian calendar date.\n\nWhat you get from the API:\n\n- Look up the Chinese lunar date for a specified Gregorian date via `GET /opendata/lunardate.php?date=YYYY-MM-DD`.\n- A single conversion endpoint backed by HKO's published Gregorian-Lunar conversion table.\n- Yearly-updated reference data maintained by HKO.\n\nOperational notes: the endpoint is served from `https://data.weather.gov.hk/weatherAPI` and is CORS-enabled, so it can be called directly from browsers. No API key or authentication is required. The conversion table is published in Chinese by HKO and updated on a yearly cadence.",
-        "entity_desc": {
-          "lunardate": "Chinese lunar date corresponding to a supplied Gregorian date, returned by `GET /opendata/lunardate.php?date=YYYY-MM-DD`."
-        },
-        "auth": false
+        "version": "1.0.0"
       },
-      "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
-        },
-        "docs_order": [
-          "ts",
-          "py",
-          "php",
-          "go",
-          "rb",
-          "lua"
-        ]
-      },
-      "entity": {
-        "lunardate": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "gregorian_date",
-              "req": true,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "lunar_date",
-              "req": true,
-              "type": "`$OBJECT`",
-              "active": true
-            }
-          ],
-          "name": "lunardate",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "args": {
-                    "query": [
-                      {
-                        "example": "20240101",
-                        "kind": "query",
-                        "name": "date",
-                        "orig": "date",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/opendata/lunardate.php",
-                  "parts": [
-                    "opendata",
-                    "lunardate.php"
-                  ],
-                  "select": {
-                    "exist": [
-                      "date"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "relations": {
-            "ancestors": []
-          }
-        }
-      },
-      "feature": {
-        "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
-          "active": true,
-          "config": {
-            "options": {
-              "active": false
-            }
-          },
-          "hook": {
-            "PostConstruct": {
-              "active": true,
-              "await": false
-            },
-            "PostConstructEntity": {
-              "active": true,
-              "await": false
-            },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
-              "await": false
-            },
-            "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
-              "active": true,
-              "await": false
-            },
-            "PreRequest": {
-              "active": true,
-              "await": false
-            },
-            "PreResponse": {
-              "active": true,
-              "await": false
-            },
-            "PreResult": {
-              "active": true,
-              "await": false
-            },
-            "PreTarget": {
-              "active": false,
-              "await": false
-            },
-            "PostOperation": {
-              "active": false,
-              "await": false
-            }
-          },
-          "target": {
-            "ts": {
-              "deps": {}
-            },
-            "go": {
-              "deps": {}
-            },
-            "lua": {
-              "deps": {}
-            },
-            "php": {
-              "deps": {}
-            },
-            "py": {
-              "deps": {}
-            },
-            "rb": {
-              "deps": {}
-            },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
-              "deps": {}
-            }
-          }
-        }
-      },
-      "flow": {
-        "BasicLunardateFlow": {
-          "entity": "lunardate",
-          "kind": "basic",
-          "name": "BasicLunardateFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "lunardate_ref01",
-                "srcdatavar": "lunardate_ref01_data",
-                "suffix": "_dt0"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-lunardate_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicLunardateFlow",
-          "active": true,
-          "param": {}
-        }
-      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "gregorian-lunar-calendar"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "gregorian-lunar-calendar"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -262,19 +272,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "gregorian-lunar-calendar"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -289,138 +299,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "gregorian-lunar-calendar"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "gregorian-lunar-calendar"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "gregorian-lunar-calendar"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "gregorian-lunar-calendar"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "gregorian-lunar-calendar"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "gregorian-lunar-calendar"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "gregorian-lunar-calendar"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "gregorian-lunar-calendar"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "gregorian-lunar-calendar"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "gregorian-lunar-calendar",
+  "origin": "voxgig-sdk"
 }

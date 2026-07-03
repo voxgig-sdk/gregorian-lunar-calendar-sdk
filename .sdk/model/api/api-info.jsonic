@@ -22,27 +22,7 @@ main: {
       ]
       title: "Gregorian Lunar Calendar"
       version: "1.0.0"
-      tagline: "Convert any Gregorian date to its Chinese lunar equivalent using Hong Kong Observatory open data"
-      homepage: "https://data.weather.gov.hk/weatherAPI/"
-      docs_url: "https://www.hko.gov.hk/en/abouthko/opendata_intro.htm"
-      license_short: "Hong Kong Government Open Data Licence — free reuse with attribution to the Hong Kong Observatory."
-      license_md: `- Data is published under the Hong Kong Government's Open Data licence terms.
-- Attribution to the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/) is expected when reusing or redistributing the data.
-- Refer to the HKO website for the full terms of use covering HKO data and materials.
-- The conversion table is updated yearly by HKO.`
-      about_md: `This SDK wraps the Gregorian-Lunar Calendar Conversion service operated by the [Hong Kong Observatory (HKO)](https://www.hko.gov.hk/), Hong Kong's official meteorological and timekeeping authority. The service returns the Chinese lunar date that corresponds to a given Gregorian calendar date.
-
-What you get from the API:
-
-- Look up the Chinese lunar date for a specified Gregorian date via \`GET /opendata/lunardate.php?date=YYYY-MM-DD\`.
-- A single conversion endpoint backed by HKO's published Gregorian-Lunar conversion table.
-- Yearly-updated reference data maintained by HKO.
-
-Operational notes: the endpoint is served from \`https://data.weather.gov.hk/weatherAPI\` and is CORS-enabled, so it can be called directly from browsers. No API key or authentication is required. The conversion table is published in Chinese by HKO and updated on a yearly cadence.`
-      entity_desc: {
-        lunardate: "Chinese lunar date corresponding to a supplied Gregorian date, returned by `GET /opendata/lunardate.php?date=YYYY-MM-DD`."
-      }
-      auth: false
     }
   }
 }
+

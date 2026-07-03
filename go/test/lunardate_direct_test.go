@@ -105,12 +105,14 @@ func lunardateDirectSetup(mockres any) *lunardateDirectSetupResult {
 	env := envOverride(map[string]any{
 		"GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID": map[string]any{},
 		"GREGORIANLUNARCALENDAR_TEST_LIVE":    "FALSE",
+		"GREGORIANLUNARCALENDAR_APIKEY":       "NONE",
 	})
 
 	live := env["GREGORIANLUNARCALENDAR_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["GREGORIANLUNARCALENDAR_APIKEY"],
 		}
 		client := sdk.NewGregorianLunarCalendarSDK(mergedOpts)
 

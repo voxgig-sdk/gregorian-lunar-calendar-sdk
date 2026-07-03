@@ -78,12 +78,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID': {},
     'GREGORIANLUNARCALENDAR_TEST_LIVE': 'FALSE',
+    'GREGORIANLUNARCALENDAR_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.GREGORIANLUNARCALENDAR_TEST_LIVE
 
   if (live) {
     const client = new GregorianLunarCalendarSDK({
+      apikey: env.GREGORIANLUNARCALENDAR_APIKEY,
     })
 
     let idmap: any = env['GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID']

@@ -91,6 +91,7 @@ def _lunardate_basic_setup(extra):
         "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID": idmap,
         "GREGORIANLUNARCALENDAR_TEST_LIVE": "FALSE",
         "GREGORIANLUNARCALENDAR_TEST_EXPLAIN": "FALSE",
+        "GREGORIANLUNARCALENDAR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _lunardate_basic_setup(extra):
     if env.get("GREGORIANLUNARCALENDAR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("GREGORIANLUNARCALENDAR_APIKEY"),
             },
             extra or {},
         ])

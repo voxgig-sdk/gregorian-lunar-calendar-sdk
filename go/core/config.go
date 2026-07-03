@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://data.weather.gov.hk/weatherAPI",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -25,36 +28,38 @@ func MakeConfig() map[string]any {
 			"lunardate": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "gregorian_date",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "lunar_date",
 						"req": true,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 1,
 					},
 				},
 				"name": "lunardate",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": "20240101",
 											"kind": "query",
 											"name": "date",
 											"orig": "date",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
@@ -73,11 +78,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},

@@ -85,6 +85,7 @@ function lunardate_basic_setup($extra)
         "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID" => $idmap,
         "GREGORIANLUNARCALENDAR_TEST_LIVE" => "FALSE",
         "GREGORIANLUNARCALENDAR_TEST_EXPLAIN" => "FALSE",
+        "GREGORIANLUNARCALENDAR_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function lunardate_basic_setup($extra)
     if ($env["GREGORIANLUNARCALENDAR_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["GREGORIANLUNARCALENDAR_APIKEY"],
             ],
             $extra ?? [],
         ]);
