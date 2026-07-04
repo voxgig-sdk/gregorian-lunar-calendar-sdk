@@ -204,14 +204,7 @@ class GregorianLunarCalendarSDK {
 
 
 
-  _lunardate?: LunardateEntity
-
-  // Idiomatic facade: `client.lunardate.list()` / `client.lunardate.load({ id })`.
-  get lunardate(): LunardateEntity {
-    return (this._lunardate ??= new LunardateEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.lunardate` instead. */
+  // Entity access: `client.Lunardate().list()` / `client.Lunardate().load({ id })`.
   Lunardate(data?: any) {
     const self = this
     return new LunardateEntity(self,data)

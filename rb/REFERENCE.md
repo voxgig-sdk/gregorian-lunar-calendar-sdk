@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## LunardateEntity
 
 ```ruby
-lunardate = client.lunardate
+lunardate = client.Lunardate
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ lunardate = client.lunardate
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.lunardate.load({ "id" => "lunardate_id" })
+result = client.Lunardate.load({ "id" => "lunardate_id" })
 ```
 
 ### Common Methods

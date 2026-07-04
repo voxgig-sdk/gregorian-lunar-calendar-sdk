@@ -32,8 +32,9 @@ client = GregorianLunarCalendarSDK.new
 
 ```ruby
 begin
-  result = client.lunardate.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Lunardate record (raises on error).
+  lunardate = client.Lunardate.load({ "id" => "example_id" })
+  puts lunardate
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = GregorianLunarCalendarSDK.test
+client = GregorianLunarCalendarSDK.test({
+  "entity" => { "lunardate" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.lunardate.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+lunardate = client.Lunardate.load({ "id" => "test01" })
+puts lunardate
 ```
 
 ### Use a custom fetch function
@@ -219,7 +224,7 @@ API path: `/opendata/lunardate.php`
 
 ### Lunardate
 
-Create an instance: `const lunardate = client.lunardate`
+Create an instance: `lunardate = client.Lunardate`
 
 #### Operations
 
@@ -236,8 +241,9 @@ Create an instance: `const lunardate = client.lunardate`
 
 #### Example: Load
 
-```ts
-const lunardate = await client.lunardate.load({ id: 'lunardate_id' })
+```ruby
+# load returns the bare Lunardate record (raises on error).
+lunardate = client.Lunardate.load({ "id" => "lunardate_id" })
 ```
 
 
@@ -312,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-lunardate = client.lunardate
+lunardate = client.Lunardate
 lunardate.load({ "id" => "example_id" })
 
 # lunardate.data_get now returns the loaded lunardate data

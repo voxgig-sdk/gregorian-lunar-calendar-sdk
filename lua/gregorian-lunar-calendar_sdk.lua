@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:lunardate():list() / client:lunardate():load({ id = ... })
-function GregorianLunarCalendarSDK:lunardate(data)
+-- Idiomatic facade: client:Lunardate():list() / client:Lunardate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GregorianLunarCalendarSDK:Lunardate(data)
   local EntityMod = require("entity.lunardate_entity")
   if data == nil then
     if self._lunardate == nil then
@@ -253,12 +254,6 @@ function GregorianLunarCalendarSDK:lunardate(data)
     end
     return self._lunardate
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:lunardate() instead.
-function GregorianLunarCalendarSDK:Lunardate(data)
-  local EntityMod = require("entity.lunardate_entity")
   return EntityMod.new(self, data)
 end
 

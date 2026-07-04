@@ -26,9 +26,9 @@ import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar'
 
 const client = new GregorianLunarCalendarSDK()
 
-// Load lunardate data
-const lunardate = await client.lunardate.load({})
-console.log(lunardate.data)
+// Load lunardate data (returns a Lunardate)
+const lunardate = await client.Lunardate().load()
+console.log(lunardate)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
 client = GregorianLunarCalendarSDK()
 
 
-# Load a specific lunardate
-lunardate = client.lunardate.load({"id": "example_id"})
+# Load a specific lunardate (returns the record, raises on error)
+lunardate = client.Lunardate().load({"id": "example_id"})
 print(lunardate)
 ```
 
@@ -98,8 +98,8 @@ require_once 'gregorianlunarcalendar_sdk.php';
 $client = new GregorianLunarCalendarSDK();
 
 
-// Load a specific lunardate
-$lunardate = $client->lunardate()->load(["id" => "example_id"]);
+// Load a specific lunardate (returns the bare record; throws on error)
+$lunardate = $client->Lunardate()->load(["id" => "example_id"]);
 print_r($lunardate);
 ```
 
@@ -123,8 +123,8 @@ require_relative "GregorianLunarCalendar_sdk"
 client = GregorianLunarCalendarSDK.new
 
 
-# Load a specific lunardate
-lunardate = client.lunardate.load({ "id" => "example_id" })
+# Load a specific lunardate (returns the bare record; raises on error)
+lunardate = client.Lunardate.load({ "id" => "example_id" })
 puts lunardate
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific lunardate
-local lunardate, err = client:lunardate():load({ id = "example_id" })
+local lunardate, err = client:Lunardate():load({ id = "example_id" })
 print(lunardate)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = GregorianLunarCalendarSDK.test()
-const result = await client.lunardate.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const lunardate = await client.Lunardate().load({ id: 'test01' })
+// lunardate is a bare Lunardate populated with mock data
+console.log(lunardate)
 ```
 
 ### Python
 
 ```python
 client = GregorianLunarCalendarSDK.test()
-result = client.lunardate.load({"id": "test01"})
+lunardate = client.Lunardate().load({"id": "test01"})
+print(lunardate)
 ```
 
 ### PHP
 
 ```php
-$client = GregorianLunarCalendarSDK::test();
-$result = $client->lunardate()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = GregorianLunarCalendarSDK::test([
+    "entity" => ["lunardate" => ["test01" => ["id" => "test01"]]],
+]);
+$lunardate = $client->Lunardate()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Lunardate(nil).Load(
 ### Ruby
 
 ```ruby
-client = GregorianLunarCalendarSDK.test
-result = client.lunardate.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = GregorianLunarCalendarSDK.test({
+  "entity" => { "lunardate" => { "test01" => { "id" => "test01" } } },
+})
+lunardate = client.Lunardate.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:lunardate():load({ id = "test01" })
+local result, err = client:Lunardate():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

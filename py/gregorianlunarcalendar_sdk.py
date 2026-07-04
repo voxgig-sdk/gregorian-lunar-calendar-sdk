@@ -220,25 +220,15 @@ class GregorianLunarCalendarSDK:
         }
 
 
-    @property
-    def lunardate(self):
-        """Idiomatic facade: client.lunardate.list() / client.lunardate.load({"id": ...})."""
-        from entity.lunardate_entity import LunardateEntity
-        cached = getattr(self, "_lunardate", None)
-        if cached is None:
-            cached = LunardateEntity(self, None)
-            self._lunardate = cached
-        return cached
-
-    def Lunardate(self, data=None):
-        # Deprecated: use client.lunardate instead.
+    def Lunardate(self, data=None) -> "LunardateEntity":
+        """Entity factory: client.Lunardate().list({}) / client.Lunardate().load({"id": ...})."""
         from entity.lunardate_entity import LunardateEntity
         return LunardateEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "GregorianLunarCalendarSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class GregorianLunarCalendarSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.lunardate_entity import LunardateEntity

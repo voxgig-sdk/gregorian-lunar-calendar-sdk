@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## LunardateEntity
 
 ```lua
-local lunardate = client:lunardate(nil)
+local lunardate = client:Lunardate(nil)
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ local lunardate = client:lunardate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:lunardate():load({ id = "lunardate_id" })
+local result, err = client:Lunardate():load({ id = "lunardate_id" })
 ```
 
 ### Common Methods

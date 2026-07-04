@@ -33,10 +33,12 @@ client = GregorianLunarCalendarSDK()
 
 ### 3. Load a lunardate
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.lunardate.load({"id": "example_id"})
-    print(result)
+    lunardate = client.Lunardate().load({"id": "example_id"})
+    print(lunardate)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GregorianLunarCalendarSDK.test()
 
-result = client.lunardate.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+lunardate = client.Lunardate().load({"id": "test01"})
+# lunardate contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -219,7 +222,7 @@ API path: `/opendata/lunardate.php`
 
 ### Lunardate
 
-Create an instance: `const lunardate = client.lunardate`
+Create an instance: `lunardate = client.Lunardate()`
 
 #### Operations
 
@@ -236,8 +239,8 @@ Create an instance: `const lunardate = client.lunardate`
 
 #### Example: Load
 
-```ts
-const lunardate = await client.lunardate.load({ id: 'lunardate_id' })
+```python
+lunardate = client.Lunardate().load({"id": "lunardate_id"})
 ```
 
 
@@ -311,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-lunardate = client.lunardate
+lunardate = client.Lunardate()
 lunardate.load({"id": "example_id"})
 
 # lunardate.data_get() now returns the loaded lunardate data

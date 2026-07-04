@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## LunardateEntity
 
 ```python
-lunardate = client.lunardate
+lunardate = client.Lunardate()
 ```
 
 ### Fields
@@ -97,7 +97,7 @@ lunardate = client.lunardate
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.lunardate.load({"id": "lunardate_id"})
+result = client.Lunardate().load({"id": "lunardate_id"})
 ```
 
 ### Common Methods

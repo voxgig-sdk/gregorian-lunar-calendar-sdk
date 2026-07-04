@@ -233,10 +233,10 @@ class GregorianLunarCalendarSDK
 
     private $_lunardate = null;
 
-    // Idiomatic facade: $client->lunardate()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Lunardate() (PHP method
-    // names are case-insensitive).
-    public function lunardate($data = null)
+    // Canonical facade: $client->Lunardate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->lunardate()
+    // resolves here too.
+    public function Lunardate($data = null)
     {
         require_once __DIR__ . '/entity/lunardate_entity.php';
         if ($data === null) {

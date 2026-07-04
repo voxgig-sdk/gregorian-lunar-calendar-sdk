@@ -109,7 +109,7 @@ Alias for `GregorianLunarCalendarSDK.test()`.
 ## LunardateEntity
 
 ```ts
-const lunardate = client.lunardate
+const lunardate = client.Lunardate()
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ const lunardate = client.lunardate
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.lunardate.load({ id: 'lunardate_id' })
+const result = await client.Lunardate().load({ id: 'lunardate_id' })
 ```
 
 ### Common Methods

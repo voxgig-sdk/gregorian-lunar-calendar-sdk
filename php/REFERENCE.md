@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## LunardateEntity
 
 ```php
-$lunardate = $client->lunardate();
+$lunardate = $client->Lunardate();
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ $lunardate = $client->lunardate();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->lunardate()->load(["id" => "lunardate_id"]);
+$result = $client->Lunardate()->load(["id" => "lunardate_id"]);
 ```
 
 ### Common Methods

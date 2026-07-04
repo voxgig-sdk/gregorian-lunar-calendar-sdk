@@ -33,9 +33,10 @@ $client = new GregorianLunarCalendarSDK();
 
 ```php
 try {
-    $result = $client->lunardate()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Lunardate record (throws on error).
+    $lunardate = $client->Lunardate()->load(["id" => "example_id"]);
+    print_r($lunardate);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = GregorianLunarCalendarSDK::test();
+$client = GregorianLunarCalendarSDK::test([
+    "entity" => ["lunardate" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->lunardate()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$lunardate = $client->Lunardate()->load(["id" => "test01"]);
+print_r($lunardate);
 ```
 
 ### Use a custom fetch function
@@ -224,7 +229,7 @@ API path: `/opendata/lunardate.php`
 
 ### Lunardate
 
-Create an instance: `const lunardate = client.lunardate`
+Create an instance: `$lunardate = $client->Lunardate();`
 
 #### Operations
 
@@ -241,8 +246,9 @@ Create an instance: `const lunardate = client.lunardate`
 
 #### Example: Load
 
-```ts
-const lunardate = await client.lunardate.load({ id: 'lunardate_id' })
+```php
+// load() returns the bare Lunardate record (throws on error).
+$lunardate = $client->Lunardate()->load(["id" => "lunardate_id"]);
 ```
 
 
@@ -317,7 +323,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$lunardate = $client->lunardate();
+$lunardate = $client->Lunardate();
 $lunardate->load(["id" => "example_id"]);
 
 // $lunardate->dataGet() now returns the loaded lunardate data
