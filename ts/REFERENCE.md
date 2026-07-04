@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `GregorianLunarCalendarSDK.test()`.
 ## LunardateEntity
 
 ```ts
-const lunardate = client.Lunardate()
+const lunardate = client.lunardate
 ```
 
 ### Fields
@@ -127,7 +126,7 @@ const lunardate = client.Lunardate()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Lunardate().load({ id: 'lunardate_id' })
+const result = await client.lunardate.load({ id: 'lunardate_id' })
 ```
 
 ### Common Methods

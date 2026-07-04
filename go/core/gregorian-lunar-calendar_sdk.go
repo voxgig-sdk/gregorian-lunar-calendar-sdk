@@ -245,6 +245,9 @@ func (sdk *GregorianLunarCalendarSDK) Direct(fetchargs map[string]any) (map[stri
 }
 
 
+// Lunardate returns a Lunardate entity bound to this client.
+// Idiomatic usage: client.Lunardate(nil).List(nil, nil) or
+// client.Lunardate(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GregorianLunarCalendarSDK) Lunardate(data map[string]any) GregorianLunarCalendarEntity {
 	return NewLunardateEntityFunc(sdk, data)
 }

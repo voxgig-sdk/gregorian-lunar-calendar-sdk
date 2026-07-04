@@ -55,6 +55,9 @@ class LunardateEntity
         return new LunardateEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Lunardate|array $args Lunardate data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class LunardateEntity
         }
     }
 
+    /**
+     * @return Lunardate|array The current Lunardate data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Lunardate fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class LunardateEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Lunardate fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class LunardateEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Lunardate.
+     *
+     * @param LunardateLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed LunardateLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Lunardate|array The loaded Lunardate as an assoc-array at the
+     *   SDK boundary; throws GregorianLunarCalendarError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -117,7 +138,7 @@ class LunardateEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

@@ -9,12 +9,9 @@ The Lua SDK for the GregorianLunarCalendar API — an entity-oriented client usi
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-gregorian-lunar-calendar
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("gregorian-lunar-calendar_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a lunardate
 
 ```lua
-local result, err = client:Lunardate():load({ id = "example_id" })
+local result, err = client:lunardate():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:GregorianLunarCalendar():load({ id = "test01" })
+local result, err = client:lunardate():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-GREGORIAN-LUNAR-CALENDAR_TEST_LIVE=TRUE
-GREGORIAN-LUNAR-CALENDAR_APIKEY=<your-key>
+GREGORIAN_LUNAR_CALENDAR_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -222,7 +215,7 @@ API path: `/opendata/lunardate.php`
 
 ### Lunardate
 
-Create an instance: `const lunardate = client.Lunardate()`
+Create an instance: `const lunardate = client.lunardate`
 
 #### Operations
 
@@ -240,7 +233,7 @@ Create an instance: `const lunardate = client.Lunardate()`
 #### Example: Load
 
 ```ts
-const lunardate = await client.Lunardate().load({ id: 'lunardate_id' })
+const lunardate = await client.lunardate.load({ id: 'lunardate_id' })
 ```
 
 
@@ -315,11 +308,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local lunardate = client:lunardate()
+lunardate:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- lunardate:data_get() now returns the loaded lunardate data
+-- lunardate:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

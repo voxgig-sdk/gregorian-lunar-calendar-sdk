@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## LunardateEntity
 
 ```lua
-local lunardate = client:Lunardate(nil)
+local lunardate = client:lunardate(nil)
 ```
 
 ### Fields
@@ -101,7 +100,7 @@ local lunardate = client:Lunardate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Lunardate():load({ id = "lunardate_id" })
+local result, err = client:lunardate():load({ id = "lunardate_id" })
 ```
 
 ### Common Methods

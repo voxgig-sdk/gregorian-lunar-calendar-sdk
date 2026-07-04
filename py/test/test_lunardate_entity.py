@@ -49,8 +49,7 @@ class TestLunardateEntity:
         # LOAD
         lunardate_ref01_ent = client.Lunardate(None)
         lunardate_ref01_match_dt0 = {}
-        lunardate_ref01_data_dt0_loaded, err = lunardate_ref01_ent.load(lunardate_ref01_match_dt0, None)
-        assert err is None
+        lunardate_ref01_data_dt0_loaded = lunardate_ref01_ent.load(lunardate_ref01_match_dt0, None)
         assert lunardate_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _lunardate_basic_setup(extra):
         "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID": idmap,
         "GREGORIANLUNARCALENDAR_TEST_LIVE": "FALSE",
         "GREGORIANLUNARCALENDAR_TEST_EXPLAIN": "FALSE",
-        "GREGORIANLUNARCALENDAR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _lunardate_basic_setup(extra):
     if env.get("GREGORIANLUNARCALENDAR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GREGORIANLUNARCALENDAR_APIKEY"),
             },
             extra or {},
         ])

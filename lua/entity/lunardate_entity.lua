@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch LunardateLoadMatch
+---@param ctrl? table
+---@return Lunardate
+---@return string? err
 function LunardateEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

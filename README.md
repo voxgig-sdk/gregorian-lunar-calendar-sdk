@@ -10,26 +10,24 @@ This is an unofficial SDK for the Gregorian Lunar Calendar public API, generated
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar` | `npm install @voxgig-sdk/gregorian-lunar-calendar` |
-| Python | `voxgig-sdk-gregorian-lunar-calendar` | `pip install voxgig-sdk-gregorian-lunar-calendar` |
-| PHP | `voxgig-sdk/gregorian-lunar-calendar` | `composer require voxgig-sdk/gregorian-lunar-calendar` |
-| Golang | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go` | `go get github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go` |
-| Ruby | `voxgig-sdk-gregorian-lunar-calendar` | `gem install voxgig-sdk-gregorian-lunar-calendar` |
-| Lua | `voxgig-sdk-gregorian-lunar-calendar` | `luarocks install voxgig-sdk-gregorian-lunar-calendar` |
+| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| Python | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| PHP | `voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go` | `go get github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go@latest` |
+| Ruby | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| Lua | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { GregorianLunarCalendarSDK } from 'gregorian-lunar-calendar'
+import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar'
 
-const client = new GregorianLunarCalendarSDK({
-  apikey: process.env.GREGORIAN-LUNAR-CALENDAR_APIKEY,
-})
+const client = new GregorianLunarCalendarSDK()
 
 // Load lunardate data
-const lunardate = await client.Lunardate().load({})
+const lunardate = await client.lunardate.load({})
 console.log(lunardate.data)
 ```
 
@@ -71,7 +69,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Lunardate** |  | `/opendata/lunardate.php` |
+| **Lunardate** | The Lunardate entity (load). | `/opendata/lunardate.php` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -81,16 +79,13 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
 
-client = GregorianLunarCalendarSDK({
-    "apikey": os.environ.get("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
-})
+client = GregorianLunarCalendarSDK()
 
 
 # Load a specific lunardate
-lunardate, err = client.Lunardate().load({"id": "example_id"})
+lunardate = client.lunardate.load({"id": "example_id"})
 print(lunardate)
 ```
 
@@ -100,13 +95,11 @@ print(lunardate)
 <?php
 require_once 'gregorianlunarcalendar_sdk.php';
 
-$client = new GregorianLunarCalendarSDK([
-    "apikey" => getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
-]);
+$client = new GregorianLunarCalendarSDK();
 
 
 // Load a specific lunardate
-[$lunardate, $err] = $client->Lunardate()->load(["id" => "example_id"]);
+$lunardate = $client->lunardate()->load(["id" => "example_id"]);
 print_r($lunardate);
 ```
 
@@ -115,9 +108,7 @@ print_r($lunardate);
 ```go
 import sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go"
 
-client := sdk.NewGregorianLunarCalendarSDK(map[string]any{
-    "apikey": os.Getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
-})
+client := sdk.New()
 
 // Load lunardate data
 lunardate, err := client.Lunardate(nil).Load(map[string]any{}, nil)
@@ -129,13 +120,11 @@ fmt.Println(lunardate)
 ```ruby
 require_relative "GregorianLunarCalendar_sdk"
 
-client = GregorianLunarCalendarSDK.new({
-  "apikey" => ENV["GREGORIAN-LUNAR-CALENDAR_APIKEY"],
-})
+client = GregorianLunarCalendarSDK.new
 
 
 # Load a specific lunardate
-lunardate, err = client.Lunardate().load({ "id" => "example_id" })
+lunardate = client.lunardate.load({ "id" => "example_id" })
 puts lunardate
 ```
 
@@ -144,13 +133,11 @@ puts lunardate
 ```lua
 local sdk = require("gregorian-lunar-calendar_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("GREGORIAN-LUNAR-CALENDAR_APIKEY"),
-})
+local client = sdk.new()
 
 
 -- Load a specific lunardate
-local lunardate, err = client:Lunardate():load({ id = "example_id" })
+local lunardate, err = client:lunardate():load({ id = "example_id" })
 print(lunardate)
 ```
 
@@ -163,7 +150,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = GregorianLunarCalendarSDK.test()
-const result = await client.Lunardate().load({ id: 'test01' })
+const result = await client.lunardate.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -171,14 +158,14 @@ const result = await client.Lunardate().load({ id: 'test01' })
 
 ```python
 client = GregorianLunarCalendarSDK.test()
-result, err = client.Lunardate().load({"id": "test01"})
+result = client.lunardate.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = GregorianLunarCalendarSDK::test();
-[$result, $err] = $client->Lunardate()->load(["id" => "test01"]);
+$result = $client->lunardate()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -194,14 +181,14 @@ result, err := client.Lunardate(nil).Load(
 
 ```ruby
 client = GregorianLunarCalendarSDK.test
-result, err = client.Lunardate().load({ "id" => "test01" })
+result = client.lunardate.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Lunardate():load({ id = "test01" })
+local result, err = client:lunardate():load({ id = "test01" })
 ```
 
 ## How it works
@@ -254,7 +241,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -263,7 +250,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -281,7 +268,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

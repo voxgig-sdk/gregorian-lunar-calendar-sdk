@@ -15,9 +15,6 @@ module GregorianLunarCalendarConfig
       },
       "options" => {
         "base" => "https://data.weather.gov.hk/weatherAPI",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:lunardate():list() / client:lunardate():load({ id = ... })
+function GregorianLunarCalendarSDK:lunardate(data)
+  local EntityMod = require("entity.lunardate_entity")
+  if data == nil then
+    if self._lunardate == nil then
+      self._lunardate = EntityMod.new(self, nil)
+    end
+    return self._lunardate
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:lunardate() instead.
 function GregorianLunarCalendarSDK:Lunardate(data)
   local EntityMod = require("entity.lunardate_entity")
   return EntityMod.new(self, data)

@@ -117,7 +117,6 @@ func lunardateBasicSetup(extra map[string]any) *entityTestSetup {
 		"GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID": idmap,
 		"GREGORIANLUNARCALENDAR_TEST_LIVE":      "FALSE",
 		"GREGORIANLUNARCALENDAR_TEST_EXPLAIN":   "FALSE",
-		"GREGORIANLUNARCALENDAR_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID"])
@@ -128,7 +127,6 @@ func lunardateBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["GREGORIANLUNARCALENDAR_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["GREGORIANLUNARCALENDAR_APIKEY"],
 			},
 			extra,
 		})

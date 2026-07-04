@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Lunardate,
+  LunardateLoadMatch,
+} from '../GregorianLunarCalendarTypes'
 
 // TODO: needs Entity superclass
-class LunardateEntity extends GregorianLunarCalendarEntityBase {
+class LunardateEntity extends GregorianLunarCalendarEntityBase<Lunardate> {
 
   constructor(client: GregorianLunarCalendarSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class LunardateEntity extends GregorianLunarCalendarEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: LunardateLoadMatch, ctrl?: Control): Promise<Lunardate> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class LunardateEntity extends GregorianLunarCalendarEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Lunardate> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

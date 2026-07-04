@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         email: "mailbox@hko.gov.hk"
         name: "Hong Kong Observatory"

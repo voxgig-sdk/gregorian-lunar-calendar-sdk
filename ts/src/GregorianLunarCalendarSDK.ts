@@ -2,6 +2,8 @@
 
 import { LunardateEntity } from './entity/LunardateEntity'
 
+export type * from './GregorianLunarCalendarTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class GregorianLunarCalendarSDK {
 
 
 
+  _lunardate?: LunardateEntity
+
+  // Idiomatic facade: `client.lunardate.list()` / `client.lunardate.load({ id })`.
+  get lunardate(): LunardateEntity {
+    return (this._lunardate ??= new LunardateEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.lunardate` instead. */
   Lunardate(data?: any) {
     const self = this
     return new LunardateEntity(self,data)
