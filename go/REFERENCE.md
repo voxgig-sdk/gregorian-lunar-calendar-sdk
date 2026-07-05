@@ -97,8 +97,8 @@ lunardate := client.Lunardate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | ``$STRING`` | Yes |  |
-| `lunar_date` | ``$OBJECT`` | Yes |  |
+| `gregorian_date` | `string` | Yes |  |
+| `lunar_date` | `map[string]any` | Yes |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ lunardate := client.Lunardate(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Lunardate(nil).Load(map[string]any{"id": "lunardate_id"}, nil)
+result, err := client.Lunardate(nil).Load(nil, nil)
 ```
 
 ### Common Methods

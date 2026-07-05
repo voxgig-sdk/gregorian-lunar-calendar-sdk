@@ -21,7 +21,7 @@ Lunardate = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Lunardate#load (any subset of Lunardate fields).
+# Request payload for Lunardate#load.
 #
 # @!attribute [rw] gregorian_date
 #   @return [String, nil]

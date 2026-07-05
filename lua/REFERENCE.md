@@ -90,8 +90,8 @@ local lunardate = client:Lunardate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | ``$STRING`` | Yes |  |
-| `lunar_date` | ``$OBJECT`` | Yes |  |
+| `gregorian_date` | `string` | Yes |  |
+| `lunar_date` | `table` | Yes |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ local lunardate = client:Lunardate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Lunardate():load({ id = "lunardate_id" })
+local result, err = client:Lunardate():load()
 ```
 
 ### Common Methods

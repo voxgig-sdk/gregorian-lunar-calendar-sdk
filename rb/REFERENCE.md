@@ -8,7 +8,7 @@ Complete API reference for the GregorianLunarCalendar Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'gregorian-lunar-calendar_sdk'
+require_relative 'GregorianLunarCalendar_sdk'
 
 client = GregorianLunarCalendarSDK.new(options)
 ```
@@ -93,8 +93,8 @@ lunardate = client.Lunardate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | ``$STRING`` | Yes |  |
-| `lunar_date` | ``$OBJECT`` | Yes |  |
+| `gregorian_date` | `String` | Yes |  |
+| `lunar_date` | `Hash` | Yes |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ lunardate = client.Lunardate
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Lunardate.load({ "id" => "lunardate_id" })
+result = client.Lunardate.load()
 ```
 
 ### Common Methods

@@ -10,5 +10,8 @@ export interface Lunardate {
   lunar_date: Record<string, any>
 }
 
-export type LunardateLoadMatch = Partial<Lunardate>
+export interface LunardateLoadMatch {
+  gregorian_date?: string
+  lunar_date?: Record<string, any>
+}
 

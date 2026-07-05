@@ -11,6 +11,8 @@
 ---@field lunar_date table
 
 ---@class LunardateLoadMatch
+---@field gregorian_date? string
+---@field lunar_date? table
 
 local M = {}
 

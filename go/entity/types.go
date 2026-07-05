@@ -14,8 +14,7 @@ type Lunardate struct {
 	LunarDate map[string]any `json:"lunar_date"`
 }
 
-// LunardateLoadMatch mirrors the lunardate fields as an all-optional match
-// filter (Go analog of Partial<Lunardate>).
+// LunardateLoadMatch is the typed request payload for Lunardate.LoadTyped.
 type LunardateLoadMatch struct {
 	GregorianDate *string `json:"gregorian_date,omitempty"`
 	LunarDate *map[string]any `json:"lunar_date,omitempty"`

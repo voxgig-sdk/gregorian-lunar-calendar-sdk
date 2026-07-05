@@ -221,7 +221,7 @@ class GregorianLunarCalendarSDK:
 
 
     def Lunardate(self, data=None) -> "LunardateEntity":
-        """Entity factory: client.Lunardate().list({}) / client.Lunardate().load({"id": ...})."""
+        """Entity factory: client.Lunardate().list() / client.Lunardate().load({"id": ...})."""
         from entity.lunardate_entity import LunardateEntity
         return LunardateEntity(self, data)
 

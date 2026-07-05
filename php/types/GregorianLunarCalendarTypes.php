@@ -19,7 +19,7 @@ class Lunardate
     public array $lunar_date;
 }
 
-/** Match filter for Lunardate#load (any subset of Lunardate fields). */
+/** Request payload for Lunardate#load. */
 class LunardateLoadMatch
 {
     public ?string $gregorian_date = null;

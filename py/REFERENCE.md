@@ -8,7 +8,7 @@ Complete API reference for the GregorianLunarCalendar Python SDK.
 ### Constructor
 
 ```python
-from gregorian-lunar-calendar_sdk import GregorianLunarCalendarSDK
+from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
 
 client = GregorianLunarCalendarSDK(options)
 ```
@@ -87,8 +87,8 @@ lunardate = client.Lunardate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | ``$STRING`` | Yes |  |
-| `lunar_date` | ``$OBJECT`` | Yes |  |
+| `gregorian_date` | `str` | Yes |  |
+| `lunar_date` | `dict` | Yes |  |
 
 ### Operations
 
@@ -97,7 +97,7 @@ lunardate = client.Lunardate()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Lunardate().load({"id": "lunardate_id"})
+result = client.Lunardate().load()
 ```
 
 ### Common Methods

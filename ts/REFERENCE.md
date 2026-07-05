@@ -116,8 +116,8 @@ const lunardate = client.Lunardate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | ``$STRING`` | Yes |  |
-| `lunar_date` | ``$OBJECT`` | Yes |  |
+| `gregorian_date` | `string` | Yes |  |
+| `lunar_date` | `Record<string, any>` | Yes |  |
 
 ### Operations
 
@@ -126,7 +126,7 @@ const lunardate = client.Lunardate()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Lunardate().load({ id: 'lunardate_id' })
+const result = await client.Lunardate().load()
 ```
 
 ### Common Methods
