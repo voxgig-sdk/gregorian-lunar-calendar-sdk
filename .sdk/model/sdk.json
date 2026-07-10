@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -223,14 +220,17 @@
           "name": "Hong Kong Government Open Data License",
           "url": "https://data.gov.hk/en/terms-and-conditions"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Hong Kong Observatory Weather API",
             "url": "https://data.weather.gov.hk/weatherAPI"
           }
         ],
+        "summary": "This API provides conversion between Gregorian and Lunar dates.",
         "title": "Gregorian Lunar Calendar",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://data.weather.gov.hk/weatherAPI/doc/HKO_Open_Data_API_Documentation.pdf"
       },
       "option": {},
       "target": {
@@ -283,6 +283,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -333,6 +336,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
