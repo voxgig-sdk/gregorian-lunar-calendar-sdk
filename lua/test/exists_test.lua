@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- GregorianLunarCalendar SDK exists test
 
 local sdk = require("gregorian-lunar-calendar_sdk")
 
