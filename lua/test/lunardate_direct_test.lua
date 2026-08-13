@@ -66,11 +66,11 @@ function lunardate_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID"] = {},
-    ["GREGORIANLUNARCALENDAR_TEST_LIVE"] = "FALSE",
+    ["GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID"] = {},
+    ["GREGORIAN_LUNAR_CALENDAR_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["GREGORIANLUNARCALENDAR_TEST_LIVE"] == "TRUE"
+  local live = env["GREGORIAN_LUNAR_CALENDAR_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

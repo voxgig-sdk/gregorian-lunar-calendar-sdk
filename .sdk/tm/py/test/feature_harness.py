@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import GregorianLunarCalendarControl
-from core.error import GregorianLunarCalendarError
-from core.result import GregorianLunarCalendarResult
-from core.spec import GregorianLunarCalendarSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import GregorianLunarCalendarControl
+from projectname_sdk.core.error import GregorianLunarCalendarError
+from projectname_sdk.core.result import GregorianLunarCalendarResult
+from projectname_sdk.core.spec import GregorianLunarCalendarSpec
 
 
 # True when this SDK was generated with the named feature.

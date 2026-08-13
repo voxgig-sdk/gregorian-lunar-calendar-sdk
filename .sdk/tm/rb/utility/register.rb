@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ GregorianLunarCalendarUtility.registrar = ->(u) {
   u.prepare_params = GregorianLunarCalendarUtilities::PrepareParams
   u.prepare_path = GregorianLunarCalendarUtilities::PreparePath
   u.prepare_query = GregorianLunarCalendarUtilities::PrepareQuery
+  u.graphql_body = GregorianLunarCalendarUtilities::GraphqlBody
+  u.graphql_errors = GregorianLunarCalendarUtilities::GraphqlErrors
   u.result_basic = GregorianLunarCalendarUtilities::ResultBasic
   u.result_body = GregorianLunarCalendarUtilities::ResultBody
   u.result_headers = GregorianLunarCalendarUtilities::ResultHeaders

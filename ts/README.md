@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = GregorianLunarCalendarSDK.test()
 
 const lunardate = await client.Lunardate().load()
-// lunardate is a bare entity populated with mock response data
+// lunardate is the entity, populated with mock response data
+// — call lunardate.data() for the record itself
 console.log(lunardate)
 ```
 
@@ -284,8 +285,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `gregorian_date` |  |
-| `lunar_date` |  |
+| `day` |  |
+| `isLeapMonth` |  |
+| `month` |  |
+| `year` |  |
+| `yearCycle` |  |
+| `zodiac` |  |
 
 Operations: load.
 
@@ -310,8 +315,12 @@ Create an instance: `const lunardate = client.Lunardate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `string` |  |
-| `lunar_date` | `Record<string, any>` |  |
+| `day` | `string` |  |
+| `isLeapMonth` | `boolean` |  |
+| `month` | `string` |  |
+| `year` | `string` |  |
+| `yearCycle` | `number` |  |
+| `zodiac` | `string` |  |
 
 #### Example: Load
 

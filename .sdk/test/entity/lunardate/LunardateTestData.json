@@ -2,18 +2,30 @@
   "existing": {
     "lunardate": {
       "LUNARDATE00": {
-        "gregorian_date": "s14",
-        "lunar_date": {},
+        "day": "s3c",
+        "isLeapMonth": false,
+        "month": "s3e",
+        "year": "s3f",
+        "yearCycle": "s40",
+        "zodiac": "s41",
         "id": "LUNARDATE00"
       },
       "LUNARDATE01": {
-        "gregorian_date": "s28",
-        "lunar_date": {},
+        "day": "s78",
+        "isLeapMonth": false,
+        "month": "s7a",
+        "year": "s7b",
+        "yearCycle": "s7c",
+        "zodiac": "s7d",
         "id": "LUNARDATE01"
       },
       "LUNARDATE02": {
-        "gregorian_date": "s3c",
-        "lunar_date": {},
+        "day": "sb4",
+        "isLeapMonth": false,
+        "month": "sb6",
+        "year": "sb7",
+        "yearCycle": "sb8",
+        "zodiac": "sb9",
         "id": "LUNARDATE02"
       }
     }
@@ -21,8 +33,12 @@
   "new": {
     "lunardate": {
       "lunardate_ref01": {
-        "gregorian_date": "s50",
-        "lunar_date": {}
+        "day": "sf0",
+        "isLeapMonth": false,
+        "month": "sf2",
+        "year": "sf3",
+        "yearCycle": "sf4",
+        "zodiac": "sf5"
       }
     }
   }

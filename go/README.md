@@ -258,8 +258,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"gregorian_date"` |  |
-| `"lunar_date"` |  |
+| `"day"` |  |
+| `"isLeapMonth"` |  |
+| `"month"` |  |
+| `"year"` |  |
+| `"yearCycle"` |  |
+| `"zodiac"` |  |
 
 Operations: Load.
 
@@ -284,8 +288,12 @@ Create an instance: `lunardate := client.Lunardate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `string` |  |
-| `lunar_date` | `map[string]any` |  |
+| `day` | `string` |  |
+| `isLeapMonth` | `bool` |  |
+| `month` | `string` |  |
+| `year` | `string` |  |
+| `yearCycle` | `int` |  |
+| `zodiac` | `string` |  |
 
 #### Example: Load
 

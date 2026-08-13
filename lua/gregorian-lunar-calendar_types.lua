@@ -7,12 +7,20 @@
 -- edit by hand.
 
 ---@class Lunardate
----@field gregorian_date string
----@field lunar_date table
+---@field day? string
+---@field isLeapMonth? boolean
+---@field month? string
+---@field year? string
+---@field yearCycle? number
+---@field zodiac? string
 
 ---@class LunardateLoadMatch
----@field gregorian_date? string
----@field lunar_date? table
+---@field day? string
+---@field isLeapMonth? boolean
+---@field month? string
+---@field year? string
+---@field yearCycle? number
+---@field zodiac? string
 
 local M = {}
 

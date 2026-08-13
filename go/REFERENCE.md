@@ -98,8 +98,12 @@ fmt.Println(lunardate.GetName()) // "lunardate"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | `string` | Yes |  |
-| `lunar_date` | `map[string]any` | Yes |  |
+| `day` | `string` | No |  |
+| `isLeapMonth` | `bool` | No |  |
+| `month` | `string` | No |  |
+| `year` | `string` | No |  |
+| `yearCycle` | `int` | No |  |
+| `zodiac` | `string` | No |  |
 
 ### Operations
 

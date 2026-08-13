@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GregorianLunarCalendarSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GregorianLunarCalendarSDK.test({
+  entity: {
+    lunardate: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const lunardate = await client.Lunardate().load()
-// lunardate is a bare Lunardate populated with mock data
+// lunardate is the Lunardate entity, populated with mock data
+// — call lunardate.data() for the record itself
 console.log(lunardate)
 ```
 
@@ -182,7 +191,7 @@ require_once 'gregorianlunarcalendar_sdk.php';
 $client = new GregorianLunarCalendarSDK();
 
 
-// Load a specific lunardate (returns the bare record; throws on error)
+// Load a specific lunardate (returns the ENTITY; call data_get() for the record; throws on error)
 $lunardate = $client->Lunardate()->load();
 print_r($lunardate);
 ```
@@ -210,7 +219,7 @@ require_relative "GregorianLunarCalendar_sdk"
 client = GregorianLunarCalendarSDK.new
 
 
-# Load a specific lunardate (returns the bare record; raises on error)
+# Load a specific lunardate (returns the ENTITY; call data_get for the record)
 lunardate = client.Lunardate.load()
 puts lunardate
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://data.gov.hk/en-data/dataset/hk-hko-rss-gregorian-lunar-calendar-conversion-table](https://data.gov.hk/en-data/dataset/hk-hko-rss-gregorian-lunar-calendar-conversion-table)
 

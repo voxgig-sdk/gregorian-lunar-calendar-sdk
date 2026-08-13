@@ -6,14 +6,34 @@ main: kit: entity: lunardate: {
 
   fields: [
     {
-      name: "gregorian_date"
-      req: true
+      name: "day"
+      req: false
       type: "`$STRING`"
     }
     {
-      name: "lunar_date"
-      req: true
-      type: "`$OBJECT`"
+      name: "isLeapMonth"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "month"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "yearCycle"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "zodiac"
+      req: false
+      type: "`$STRING`"
     }
   ]
 
@@ -48,7 +68,7 @@ main: kit: entity: lunardate: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.lunarDate`"
           }
         }
       ]

@@ -23,8 +23,8 @@ module GregorianLunarCalendarTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("GREGORIANLUNARCALENDAR_TEST_LIVE")
-    override = getenv("GREGORIANLUNARCALENDAR_TEST_OVERRIDE")
+    live = getenv("GREGORIAN_LUNAR_CALENDAR_TEST_LIVE")
+    override = getenv("GREGORIAN_LUNAR_CALENDAR_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module GregorianLunarCalendarTestRunner
       end
     end
 
-    explain = getenv("GREGORIANLUNARCALENDAR_TEST_EXPLAIN")
-    m["GREGORIANLUNARCALENDAR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN")
+    m["GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

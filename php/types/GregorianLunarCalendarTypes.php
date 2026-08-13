@@ -15,14 +15,22 @@ declare(strict_types=1);
 /** Lunardate entity data model. */
 class Lunardate
 {
-    public string $gregorian_date;
-    public array $lunar_date;
+    public ?string $day = null;
+    public ?bool $isLeapMonth = null;
+    public ?string $month = null;
+    public ?string $year = null;
+    public ?int $yearCycle = null;
+    public ?string $zodiac = null;
 }
 
 /** Request payload for Lunardate#load. */
 class LunardateLoadMatch
 {
-    public ?string $gregorian_date = null;
-    public ?array $lunar_date = null;
+    public ?string $day = null;
+    public ?bool $isLeapMonth = null;
+    public ?string $month = null;
+    public ?string $year = null;
+    public ?int $yearCycle = null;
+    public ?string $zodiac = null;
 }
 

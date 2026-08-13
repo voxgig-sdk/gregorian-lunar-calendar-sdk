@@ -90,8 +90,12 @@ local lunardate = client:Lunardate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | `string` | Yes |  |
-| `lunar_date` | `table` | Yes |  |
+| `day` | `string` | No |  |
+| `isLeapMonth` | `boolean` | No |  |
+| `month` | `string` | No |  |
+| `year` | `string` | No |  |
+| `yearCycle` | `number` | No |  |
+| `zodiac` | `string` | No |  |
 
 ### Operations
 

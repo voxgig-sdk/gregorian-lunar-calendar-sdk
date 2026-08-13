@@ -19,11 +19,15 @@ import {
 describe('LunardateDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when GREGORIANLUNARCALENDAR_TEST_LIVE=TRUE.
-  afterEach(liveDelay('GREGORIANLUNARCALENDAR_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when GREGORIAN_LUNAR_CALENDAR_TEST_LIVE=TRUE.
+  afterEach(liveDelay('GREGORIAN_LUNAR_CALENDAR_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new GregorianLunarCalendarSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -76,17 +80,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID': {},
-    'GREGORIANLUNARCALENDAR_TEST_LIVE': 'FALSE',
+    'GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID': {},
+    'GREGORIAN_LUNAR_CALENDAR_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.GREGORIANLUNARCALENDAR_TEST_LIVE
+  const live = 'TRUE' === env.GREGORIAN_LUNAR_CALENDAR_TEST_LIVE
 
   if (live) {
     const client = new GregorianLunarCalendarSDK({
     })
 
-    let idmap: any = env['GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID']
+    let idmap: any = env['GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

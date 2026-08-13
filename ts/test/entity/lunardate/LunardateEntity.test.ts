@@ -26,8 +26,8 @@ import {
 describe('LunardateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when GREGORIANLUNARCALENDAR_TEST_LIVE=TRUE.
-  afterEach(liveDelay('GREGORIANLUNARCALENDAR_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when GREGORIAN_LUNAR_CALENDAR_TEST_LIVE=TRUE.
+  afterEach(liveDelay('GREGORIAN_LUNAR_CALENDAR_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = GregorianLunarCalendarSDK.test()
@@ -62,7 +62,7 @@ describe('LunardateEntity', async () => {
     // LOAD
     const lunardate_ref01_ent = client.Lunardate()
     const lunardate_ref01_match_dt0: any = {}
-    const lunardate_ref01_data_dt0 = await lunardate_ref01_ent.load(lunardate_ref01_match_dt0)
+    const lunardate_ref01_data_dt0 = (await lunardate_ref01_ent.load(lunardate_ref01_match_dt0)).data()
     assert(null != lunardate_ref01_data_dt0)
 
 

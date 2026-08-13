@@ -34,7 +34,7 @@ client = GregorianLunarCalendarSDK.new
 
 ```ruby
 begin
-  # load returns the bare Lunardate record (raises on error).
+  # load returns the ENTITY — call data_get for the Lunardate record (raises on error).
   lunardate = client.Lunardate.load()
   puts lunardate
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = GregorianLunarCalendarSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 lunardate = client.Lunardate.load()
 puts lunardate
 ```
@@ -234,8 +235,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `gregorian_date` |  |
-| `lunar_date` |  |
+| `day` |  |
+| `isLeapMonth` |  |
+| `month` |  |
+| `year` |  |
+| `yearCycle` |  |
+| `zodiac` |  |
 
 Operations: Load.
 
@@ -260,13 +265,17 @@ Create an instance: `lunardate = client.Lunardate`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `String` |  |
-| `lunar_date` | `Hash` |  |
+| `day` | `String` |  |
+| `isLeapMonth` | `Boolean` |  |
+| `month` | `String` |  |
+| `year` | `String` |  |
+| `yearCycle` | `Integer` |  |
+| `zodiac` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Lunardate record (raises on error).
+# load returns the ENTITY — call data_get for the Lunardate record (raises on error).
 lunardate = client.Lunardate.load()
 ```
 

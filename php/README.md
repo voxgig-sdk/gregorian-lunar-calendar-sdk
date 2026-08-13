@@ -35,7 +35,7 @@ $client = new GregorianLunarCalendarSDK();
 
 ```php
 try {
-    // load() returns the bare Lunardate record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Lunardate record (throws on error).
     $lunardate = $client->Lunardate()->load();
     print_r($lunardate);
 } catch (\Throwable $err) {
@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = GregorianLunarCalendarSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $lunardate = $client->Lunardate()->load();
 print_r($lunardate);
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -244,8 +245,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `gregorian_date` |  |
-| `lunar_date` |  |
+| `day` |  |
+| `isLeapMonth` |  |
+| `month` |  |
+| `year` |  |
+| `yearCycle` |  |
+| `zodiac` |  |
 
 Operations: Load.
 
@@ -270,13 +275,17 @@ Create an instance: `$lunardate = $client->Lunardate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `string` |  |
-| `lunar_date` | `array` |  |
+| `day` | `string` |  |
+| `isLeapMonth` | `bool` |  |
+| `month` | `string` |  |
+| `year` | `string` |  |
+| `yearCycle` | `int` |  |
+| `zodiac` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Lunardate record (throws on error).
+// load() returns the ENTITY — call data_get() for the Lunardate record (throws on error).
 $lunardate = $client->Lunardate()->load();
 ```
 

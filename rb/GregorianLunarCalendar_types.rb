@@ -10,27 +10,59 @@
 
 # Lunardate entity data model.
 #
-# @!attribute [rw] gregorian_date
-#   @return [String]
+# @!attribute [rw] day
+#   @return [String, nil]
 #
-# @!attribute [rw] lunar_date
-#   @return [Hash]
+# @!attribute [rw] isLeapMonth
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] month
+#   @return [String, nil]
+#
+# @!attribute [rw] year
+#   @return [String, nil]
+#
+# @!attribute [rw] yearCycle
+#   @return [Integer, nil]
+#
+# @!attribute [rw] zodiac
+#   @return [String, nil]
 Lunardate = Struct.new(
-  :gregorian_date,
-  :lunar_date,
+  :day,
+  :isLeapMonth,
+  :month,
+  :year,
+  :yearCycle,
+  :zodiac,
   keyword_init: true
 )
 
 # Request payload for Lunardate#load.
 #
-# @!attribute [rw] gregorian_date
+# @!attribute [rw] day
 #   @return [String, nil]
 #
-# @!attribute [rw] lunar_date
-#   @return [Hash, nil]
+# @!attribute [rw] isLeapMonth
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] month
+#   @return [String, nil]
+#
+# @!attribute [rw] year
+#   @return [String, nil]
+#
+# @!attribute [rw] yearCycle
+#   @return [Integer, nil]
+#
+# @!attribute [rw] zodiac
+#   @return [String, nil]
 LunardateLoadMatch = Struct.new(
-  :gregorian_date,
-  :lunar_date,
+  :day,
+  :isLeapMonth,
+  :month,
+  :year,
+  :yearCycle,
+  :zodiac,
   keyword_init: true
 )
 

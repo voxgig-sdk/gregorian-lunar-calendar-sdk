@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'GregorianLunarCalendar',
   }
 
 
@@ -56,17 +56,45 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "gregorian_date",
-          "req": true,
+          "name": "day",
+          "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "lunar_date",
-          "req": true,
-          "type": "`$OBJECT`",
+          "name": "isLeapMonth",
+          "req": false,
+          "type": "`$BOOLEAN`",
           "index$": 1
+        },
+        {
+          "active": true,
+          "name": "month",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "year",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "yearCycle",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "zodiac",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 5
         }
       ],
       "name": "lunardate",
@@ -90,6 +118,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/opendata/lunardate.php",
               "parts": [
@@ -103,7 +132,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.lunarDate`"
               },
               "index$": 0
             }

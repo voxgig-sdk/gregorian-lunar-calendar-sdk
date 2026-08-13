@@ -116,8 +116,12 @@ const lunardate = client.Lunardate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | `string` | Yes |  |
-| `lunar_date` | `Record<string, any>` | Yes |  |
+| `day` | `string` | No |  |
+| `isLeapMonth` | `boolean` | No |  |
+| `month` | `string` | No |  |
+| `year` | `string` | No |  |
+| `yearCycle` | `number` | No |  |
+| `zodiac` | `string` | No |  |
 
 ### Operations
 

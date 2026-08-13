@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import GregorianLunarCalendarSDK
-from core.error import GregorianLunarCalendarError
-from core.result import GregorianLunarCalendarResult
-from core.response import GregorianLunarCalendarResponse
-from core.spec import GregorianLunarCalendarSpec
-from feature.base_feature import GregorianLunarCalendarBaseFeature
+from projectname_sdk.core.error import GregorianLunarCalendarError
+from projectname_sdk.core.result import GregorianLunarCalendarResult
+from projectname_sdk.core.response import GregorianLunarCalendarResponse
+from projectname_sdk.core.spec import GregorianLunarCalendarSpec
+from projectname_sdk.feature.base_feature import GregorianLunarCalendarBaseFeature
 
 
 def _client():

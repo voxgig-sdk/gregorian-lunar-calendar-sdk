@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# GregorianLunarCalendar SDK exists test
 
 import pytest
 from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK

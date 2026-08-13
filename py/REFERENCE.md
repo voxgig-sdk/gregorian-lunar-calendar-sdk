@@ -87,8 +87,12 @@ lunardate = client.Lunardate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | `str` | Yes |  |
-| `lunar_date` | `dict` | Yes |  |
+| `day` | `str` | No |  |
+| `isLeapMonth` | `bool` | No |  |
+| `month` | `str` | No |  |
+| `year` | `str` | No |  |
+| `yearCycle` | `int` | No |  |
+| `zodiac` | `str` | No |  |
 
 ### Operations
 

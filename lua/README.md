@@ -225,8 +225,12 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `gregorian_date` |  |
-| `lunar_date` |  |
+| `day` |  |
+| `isLeapMonth` |  |
+| `month` |  |
+| `year` |  |
+| `yearCycle` |  |
+| `zodiac` |  |
 
 Operations: Load.
 
@@ -251,8 +255,12 @@ Create an instance: `local lunardate = client:Lunardate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `string` |  |
-| `lunar_date` | `table` |  |
+| `day` | `string` |  |
+| `isLeapMonth` | `boolean` |  |
+| `month` | `string` |  |
+| `year` | `string` |  |
+| `yearCycle` | `number` |  |
+| `zodiac` | `string` |  |
 
 #### Example: Load
 

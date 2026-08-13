@@ -93,8 +93,12 @@ lunardate = client.Lunardate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gregorian_date` | `String` | Yes |  |
-| `lunar_date` | `Hash` | Yes |  |
+| `day` | `String` | No |  |
+| `isLeapMonth` | `Boolean` | No |  |
+| `month` | `String` | No |  |
+| `year` | `String` | No |  |
+| `yearCycle` | `Integer` | No |  |
+| `zodiac` | `String` | No |  |
 
 ### Operations
 

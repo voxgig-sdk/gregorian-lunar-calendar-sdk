@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gregorianlunarcalendar_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gregorianlunarcalendar_sdk import GregorianLunarCalendarSDK
-from core import helpers
+from gregorianlunarcalendar_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _lunardate_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID": {},
-        "GREGORIANLUNARCALENDAR_TEST_LIVE": "FALSE",
+        "GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID": {},
+        "GREGORIAN_LUNAR_CALENDAR_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("GREGORIANLUNARCALENDAR_TEST_LIVE") == "TRUE"
+    live = env.get("GREGORIAN_LUNAR_CALENDAR_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

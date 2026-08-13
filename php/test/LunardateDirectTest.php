@@ -71,11 +71,11 @@ function lunardate_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "GREGORIANLUNARCALENDAR_TEST_LUNARDATE_ENTID" => [],
-        "GREGORIANLUNARCALENDAR_TEST_LIVE" => "FALSE",
+        "GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID" => [],
+        "GREGORIAN_LUNAR_CALENDAR_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["GREGORIANLUNARCALENDAR_TEST_LIVE"] === "TRUE";
+    $live = $env["GREGORIAN_LUNAR_CALENDAR_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

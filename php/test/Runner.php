@@ -43,8 +43,8 @@ class GregorianLunarCalendarTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('GREGORIANLUNARCALENDAR_TEST_LIVE');
-        $override = self::getenv('GREGORIANLUNARCALENDAR_TEST_OVERRIDE');
+        $live = self::getenv('GREGORIAN_LUNAR_CALENDAR_TEST_LIVE');
+        $override = self::getenv('GREGORIAN_LUNAR_CALENDAR_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class GregorianLunarCalendarTestRunner
             }
         }
 
-        $explain = self::getenv('GREGORIANLUNARCALENDAR_TEST_EXPLAIN');
+        $explain = self::getenv('GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['GREGORIANLUNARCALENDAR_TEST_EXPLAIN'] = $explain;
+            $m['GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

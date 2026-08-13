@@ -38,7 +38,7 @@ client = GregorianLunarCalendarSDK()
 
 ### 3. Load a lunardate
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -122,7 +122,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GregorianLunarCalendarSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 lunardate = client.Lunardate().load()
 # lunardate contains the mock response record
 ```
@@ -218,7 +219,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -240,8 +241,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `gregorian_date` |  |
-| `lunar_date` |  |
+| `day` |  |
+| `isLeapMonth` |  |
+| `month` |  |
+| `year` |  |
+| `yearCycle` |  |
+| `zodiac` |  |
 
 Operations: Load.
 
@@ -266,8 +271,12 @@ Create an instance: `lunardate = client.Lunardate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gregorian_date` | `str` |  |
-| `lunar_date` | `dict` |  |
+| `day` | `str` |  |
+| `isLeapMonth` | `bool` |  |
+| `month` | `str` |  |
+| `year` | `str` |  |
+| `yearCycle` | `int` |  |
+| `zodiac` | `str` |  |
 
 #### Example: Load
 
