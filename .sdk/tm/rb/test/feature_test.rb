@@ -15,7 +15,7 @@ require_relative "../GregorianLunarCalendar_sdk"
 module GregorianLunarCalendarFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = GregorianLunarCalendarConfig.make_config["feature"]
+    f = GregorianLunarCalendarConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

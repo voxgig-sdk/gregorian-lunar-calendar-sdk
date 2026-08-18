@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from gregorianlunarcalendar_sdk.config import make_config
+from gregorianlunarcalendar_sdk.config import shared_config
 from gregorianlunarcalendar_sdk.features import _make_feature
 from gregorianlunarcalendar_sdk.core.control import GregorianLunarCalendarControl
 from gregorianlunarcalendar_sdk.core.error import GregorianLunarCalendarError
@@ -24,7 +24,7 @@ from gregorianlunarcalendar_sdk.core.spec import GregorianLunarCalendarSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

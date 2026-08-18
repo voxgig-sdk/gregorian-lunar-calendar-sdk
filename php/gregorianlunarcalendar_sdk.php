@@ -40,7 +40,7 @@ class GregorianLunarCalendarSDK
         $utility = new GregorianLunarCalendarUtility();
         $this->_utility = $utility;
 
-        $config = GregorianLunarCalendarConfig::make_config();
+        $config = GregorianLunarCalendarConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

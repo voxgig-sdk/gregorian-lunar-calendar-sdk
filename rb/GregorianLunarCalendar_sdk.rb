@@ -28,7 +28,7 @@ class GregorianLunarCalendarSDK
     utility = GregorianLunarCalendarUtility.new
     @_utility = utility
 
-    config = GregorianLunarCalendarConfig.make_config
+    config = GregorianLunarCalendarConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
