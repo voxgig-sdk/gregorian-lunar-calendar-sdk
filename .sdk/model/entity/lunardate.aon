@@ -8,31 +8,37 @@ main: kit: entity: lunardate: {
     {
       name: "day"
       req: false
+      short: "Lunar day in Chinese"
       type: "`$STRING`"
     }
     {
       name: "isLeapMonth"
       req: false
+      short: "Indicates if the lunar month is a leap month"
       type: "`$BOOLEAN`"
     }
     {
       name: "month"
       req: false
+      short: "Lunar month in Chinese"
       type: "`$STRING`"
     }
     {
       name: "year"
       req: false
+      short: "Lunar year in Chinese Heavenly Stems and Earthly Branches"
       type: "`$STRING`"
     }
     {
       name: "yearCycle"
       req: false
+      short: "Year in the 60-year cycle"
       type: "`$INTEGER`"
     }
     {
       name: "zodiac"
       req: false
+      short: "Chinese zodiac animal"
       type: "`$STRING`"
     }
   ]

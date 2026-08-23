@@ -116,12 +116,12 @@ const lunardate = client.Lunardate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `day` | `string` | No |  |
-| `isLeapMonth` | `boolean` | No |  |
-| `month` | `string` | No |  |
-| `year` | `string` | No |  |
-| `yearCycle` | `number` | No |  |
-| `zodiac` | `string` | No |  |
+| `day` | `string` | No | Lunar day in Chinese |
+| `isLeapMonth` | `boolean` | No | Indicates if the lunar month is a leap month |
+| `month` | `string` | No | Lunar month in Chinese |
+| `year` | `string` | No | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `number` | No | Year in the 60-year cycle |
+| `zodiac` | `string` | No | Chinese zodiac animal |
 
 ### Operations
 

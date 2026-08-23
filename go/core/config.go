@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "GregorianLunarCalendar",
+			"slug": "gregorian-lunar-calendar",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,26 +36,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "day",
+						"short": "Lunar day in Chinese",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "isLeapMonth",
+						"short": "Indicates if the lunar month is a leap month",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "month",
+						"short": "Lunar month in Chinese",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "yearCycle",
+						"short": "Year in the 60-year cycle",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "zodiac",
+						"short": "Chinese zodiac animal",
 						"type": "`$STRING`",
 					},
 				},

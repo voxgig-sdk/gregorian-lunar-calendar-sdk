@@ -6,7 +6,7 @@ The Golang SDK for the GregorianLunarCalendar API — an entity-oriented client 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Lunardate(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,12 +258,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"day"` |  |
-| `"isLeapMonth"` |  |
-| `"month"` |  |
-| `"year"` |  |
-| `"yearCycle"` |  |
-| `"zodiac"` |  |
+| `"day"` | Lunar day in Chinese |
+| `"isLeapMonth"` | Indicates if the lunar month is a leap month |
+| `"month"` | Lunar month in Chinese |
+| `"year"` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `"yearCycle"` | Year in the 60-year cycle |
+| `"zodiac"` | Chinese zodiac animal |
 
 Operations: Load.
 
@@ -288,12 +288,12 @@ Create an instance: `lunardate := client.Lunardate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` |  |
-| `isLeapMonth` | `bool` |  |
-| `month` | `string` |  |
-| `year` | `string` |  |
-| `yearCycle` | `int` |  |
-| `zodiac` | `string` |  |
+| `day` | `string` | Lunar day in Chinese |
+| `isLeapMonth` | `bool` | Indicates if the lunar month is a leap month |
+| `month` | `string` | Lunar month in Chinese |
+| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `int` | Year in the 60-year cycle |
+| `zodiac` | `string` | Chinese zodiac animal |
 
 #### Example: Load
 

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "GregorianLunarCalendar",
+      slug = "gregorian-lunar-calendar",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,26 +32,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "day",
+            ["short"] = "Lunar day in Chinese",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "isLeapMonth",
+            ["short"] = "Indicates if the lunar month is a leap month",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "month",
+            ["short"] = "Lunar month in Chinese",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "year",
+            ["short"] = "Lunar year in Chinese Heavenly Stems and Earthly Branches",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "yearCycle",
+            ["short"] = "Year in the 60-year cycle",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "zodiac",
+            ["short"] = "Chinese zodiac animal",
             ["type"] = "`$STRING`",
           },
         },

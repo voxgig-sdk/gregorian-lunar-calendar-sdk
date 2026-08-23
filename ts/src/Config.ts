@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'GregorianLunarCalendar',
+        slug: "gregorian-lunar-calendar",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,26 +67,32 @@ class Config {
       "fields": [
         {
           "name": "day",
+          "short": "Lunar day in Chinese",
           "type": "`$STRING`"
         },
         {
           "name": "isLeapMonth",
+          "short": "Indicates if the lunar month is a leap month",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "month",
+          "short": "Lunar month in Chinese",
           "type": "`$STRING`"
         },
         {
           "name": "year",
+          "short": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
           "type": "`$STRING`"
         },
         {
           "name": "yearCycle",
+          "short": "Year in the 60-year cycle",
           "type": "`$INTEGER`"
         },
         {
           "name": "zodiac",
+          "short": "Chinese zodiac animal",
           "type": "`$STRING`"
         }
       ],

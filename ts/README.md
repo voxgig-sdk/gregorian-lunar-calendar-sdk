@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,12 +285,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `day` |  |
-| `isLeapMonth` |  |
-| `month` |  |
-| `year` |  |
-| `yearCycle` |  |
-| `zodiac` |  |
+| `day` | Lunar day in Chinese |
+| `isLeapMonth` | Indicates if the lunar month is a leap month |
+| `month` | Lunar month in Chinese |
+| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | Year in the 60-year cycle |
+| `zodiac` | Chinese zodiac animal |
 
 Operations: load.
 
@@ -315,12 +315,12 @@ Create an instance: `const lunardate = client.Lunardate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` |  |
-| `isLeapMonth` | `boolean` |  |
-| `month` | `string` |  |
-| `year` | `string` |  |
-| `yearCycle` | `number` |  |
-| `zodiac` | `string` |  |
+| `day` | `string` | Lunar day in Chinese |
+| `isLeapMonth` | `boolean` | Indicates if the lunar month is a leap month |
+| `month` | `string` | Lunar month in Chinese |
+| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `number` | Year in the 60-year cycle |
+| `zodiac` | `string` | Chinese zodiac animal |
 
 #### Example: Load
 

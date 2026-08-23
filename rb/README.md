@@ -235,12 +235,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `day` |  |
-| `isLeapMonth` |  |
-| `month` |  |
-| `year` |  |
-| `yearCycle` |  |
-| `zodiac` |  |
+| `day` | Lunar day in Chinese |
+| `isLeapMonth` | Indicates if the lunar month is a leap month |
+| `month` | Lunar month in Chinese |
+| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | Year in the 60-year cycle |
+| `zodiac` | Chinese zodiac animal |
 
 Operations: Load.
 
@@ -265,12 +265,12 @@ Create an instance: `lunardate = client.Lunardate`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `String` |  |
-| `isLeapMonth` | `Boolean` |  |
-| `month` | `String` |  |
-| `year` | `String` |  |
-| `yearCycle` | `Integer` |  |
-| `zodiac` | `String` |  |
+| `day` | `String` | Lunar day in Chinese |
+| `isLeapMonth` | `Boolean` | Indicates if the lunar month is a leap month |
+| `month` | `String` | Lunar month in Chinese |
+| `year` | `String` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `Integer` | Year in the 60-year cycle |
+| `zodiac` | `String` | Chinese zodiac animal |
 
 #### Example: Load
 

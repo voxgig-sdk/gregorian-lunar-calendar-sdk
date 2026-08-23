@@ -241,12 +241,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `day` |  |
-| `isLeapMonth` |  |
-| `month` |  |
-| `year` |  |
-| `yearCycle` |  |
-| `zodiac` |  |
+| `day` | Lunar day in Chinese |
+| `isLeapMonth` | Indicates if the lunar month is a leap month |
+| `month` | Lunar month in Chinese |
+| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | Year in the 60-year cycle |
+| `zodiac` | Chinese zodiac animal |
 
 Operations: Load.
 
@@ -271,12 +271,12 @@ Create an instance: `lunardate = client.Lunardate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `str` |  |
-| `isLeapMonth` | `bool` |  |
-| `month` | `str` |  |
-| `year` | `str` |  |
-| `yearCycle` | `int` |  |
-| `zodiac` | `str` |  |
+| `day` | `str` | Lunar day in Chinese |
+| `isLeapMonth` | `bool` | Indicates if the lunar month is a leap month |
+| `month` | `str` | Lunar month in Chinese |
+| `year` | `str` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `int` | Year in the 60-year cycle |
+| `zodiac` | `str` | Chinese zodiac animal |
 
 #### Example: Load
 

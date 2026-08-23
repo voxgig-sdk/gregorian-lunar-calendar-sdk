@@ -93,12 +93,12 @@ lunardate = client.Lunardate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `day` | `String` | No |  |
-| `isLeapMonth` | `Boolean` | No |  |
-| `month` | `String` | No |  |
-| `year` | `String` | No |  |
-| `yearCycle` | `Integer` | No |  |
-| `zodiac` | `String` | No |  |
+| `day` | `String` | No | Lunar day in Chinese |
+| `isLeapMonth` | `Boolean` | No | Indicates if the lunar month is a leap month |
+| `month` | `String` | No | Lunar month in Chinese |
+| `year` | `String` | No | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `Integer` | No | Year in the 60-year cycle |
+| `zodiac` | `String` | No | Chinese zodiac animal |
 
 ### Operations
 

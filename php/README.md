@@ -245,12 +245,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `day` |  |
-| `isLeapMonth` |  |
-| `month` |  |
-| `year` |  |
-| `yearCycle` |  |
-| `zodiac` |  |
+| `day` | Lunar day in Chinese |
+| `isLeapMonth` | Indicates if the lunar month is a leap month |
+| `month` | Lunar month in Chinese |
+| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | Year in the 60-year cycle |
+| `zodiac` | Chinese zodiac animal |
 
 Operations: Load.
 
@@ -275,12 +275,12 @@ Create an instance: `$lunardate = $client->Lunardate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` |  |
-| `isLeapMonth` | `bool` |  |
-| `month` | `string` |  |
-| `year` | `string` |  |
-| `yearCycle` | `int` |  |
-| `zodiac` | `string` |  |
+| `day` | `string` | Lunar day in Chinese |
+| `isLeapMonth` | `bool` | Indicates if the lunar month is a leap month |
+| `month` | `string` | Lunar month in Chinese |
+| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
+| `yearCycle` | `int` | Year in the 60-year cycle |
+| `zodiac` | `string` | Chinese zodiac animal |
 
 #### Example: Load
 
