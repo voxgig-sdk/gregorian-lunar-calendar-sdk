@@ -28,6 +28,7 @@ module GregorianLunarCalendarConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
