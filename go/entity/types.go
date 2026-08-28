@@ -24,12 +24,7 @@ type Lunardate struct {
 
 // LunardateLoadMatch is the typed request payload for Lunardate.LoadTyped.
 type LunardateLoadMatch struct {
-	Day *string `json:"day,omitempty"`
-	IsLeapMonth *bool `json:"isLeapMonth,omitempty"`
-	Month *string `json:"month,omitempty"`
-	Year *string `json:"year,omitempty"`
-	YearCycle *int `json:"yearCycle,omitempty"`
-	Zodiac *string `json:"zodiac,omitempty"`
+	Date string `json:"date"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

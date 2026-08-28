@@ -15,12 +15,7 @@
 ---@field zodiac? string
 
 ---@class LunardateLoadMatch
----@field day? string
----@field isLeapMonth? boolean
----@field month? string
----@field year? string
----@field yearCycle? number
----@field zodiac? string
+---@field date string
 
 local M = {}
 

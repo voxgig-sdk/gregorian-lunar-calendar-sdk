@@ -26,11 +26,6 @@ class Lunardate
 /** Request payload for Lunardate#load. */
 class LunardateLoadMatch
 {
-    public ?string $day = null;
-    public ?bool $isLeapMonth = null;
-    public ?string $month = null;
-    public ?string $year = null;
-    public ?int $yearCycle = null;
-    public ?string $zodiac = null;
+    public string $date;
 }
 

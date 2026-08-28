@@ -39,30 +39,10 @@ Lunardate = Struct.new(
 
 # Request payload for Lunardate#load.
 #
-# @!attribute [rw] day
-#   @return [String, nil]
-#
-# @!attribute [rw] isLeapMonth
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] month
-#   @return [String, nil]
-#
-# @!attribute [rw] year
-#   @return [String, nil]
-#
-# @!attribute [rw] yearCycle
-#   @return [Integer, nil]
-#
-# @!attribute [rw] zodiac
-#   @return [String, nil]
+# @!attribute [rw] date
+#   @return [String]
 LunardateLoadMatch = Struct.new(
-  :day,
-  :isLeapMonth,
-  :month,
-  :year,
-  :yearCycle,
-  :zodiac,
+  :date,
   keyword_init: true
 )
 

@@ -39,7 +39,7 @@ const client = new GregorianLunarCalendarSDK()
 
 ```ts
 try {
-  const lunardate = await client.Lunardate().load()
+  const lunardate = await client.Lunardate().load({ date: 'example_date' })
   console.log(lunardate)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const lunardate = await client.Lunardate().load()
+  const lunardate = await client.Lunardate().load({ date: "example" })
   console.log(lunardate)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GregorianLunarCalendarSDK.test()
 
-const lunardate = await client.Lunardate().load()
+const lunardate = await client.Lunardate().load({ date: 'example_date' })
 // lunardate is the entity, populated with mock response data
 // — call lunardate.data() for the record itself
 console.log(lunardate)
@@ -141,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.Lunardate()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ date: 'example_date' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -325,8 +325,31 @@ Create an instance: `const lunardate = client.Lunardate()`
 #### Example: Load
 
 ```ts
-const lunardate = await client.Lunardate().load()
+const lunardate = await client.Lunardate().load({ date: 'date' })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -399,7 +422,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const lunardate = client.Lunardate()
-await lunardate.load()
+await lunardate.load({ date: "example" })
 
 // lunardate.data() now returns the lunardate data from the last `load`
 // lunardate.match() returns the last match criteria

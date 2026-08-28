@@ -25,10 +25,5 @@ class Lunardate(TypedDict, total=False):
     zodiac: str
 
 
-class LunardateLoadMatch(TypedDict, total=False):
-    day: str
-    isLeapMonth: bool
-    month: str
-    year: str
-    yearCycle: int
-    zodiac: str
+class LunardateLoadMatch(TypedDict):
+    date: str

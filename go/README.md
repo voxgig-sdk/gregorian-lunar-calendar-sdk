@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single lunardate — the value is the loaded record.
-    lunardate, err := client.Lunardate(nil).Load(nil, nil)
+    lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "example_date"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-lunardate, err := client.Lunardate(nil).Load(nil, nil)
+lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 lunardate, err := client.Lunardate(nil).Load(
-    nil, nil,
+    map[string]any{"date": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -298,12 +298,35 @@ Create an instance: `lunardate := client.Lunardate(nil)`
 #### Example: Load
 
 ```go
-lunardate, err := client.Lunardate(nil).Load(nil, nil)
+lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "date"}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(lunardate) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -380,7 +403,7 @@ stores the returned data and match criteria internally.
 
 ```go
 lunardate := client.Lunardate(nil)
-lunardate.Load(nil, nil)
+lunardate.Load(map[string]any{"date": "example"}, nil)
 
 // lunardate.Data() now returns the lunardate data from the last load
 // lunardate.Match() returns the last match criteria

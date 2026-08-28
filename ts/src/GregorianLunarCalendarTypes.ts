@@ -15,11 +15,6 @@ export interface Lunardate {
 }
 
 export interface LunardateLoadMatch {
-  day?: string
-  isLeapMonth?: boolean
-  month?: string
-  year?: string
-  yearCycle?: number
-  zodiac?: string
+  date: string
 }
 
