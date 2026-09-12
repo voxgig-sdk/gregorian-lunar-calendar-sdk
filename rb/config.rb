@@ -96,9 +96,13 @@ module GregorianLunarCalendarConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/opendata/lunardate.php",
-                  "parts" => [
-                    "opendata",
-                    "lunardate.php",
+                  "segments" => [
+                    {
+                      "lit" => "opendata",
+                    },
+                    {
+                      "lit" => "lunardate.php",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -109,6 +113,10 @@ module GregorianLunarCalendarConfig
                     "req" => "`reqdata`",
                     "res" => "`body.lunarDate`",
                   },
+                  "parts" => [
+                    "opendata",
+                    "lunardate.php",
+                  ],
                 },
               ],
             },

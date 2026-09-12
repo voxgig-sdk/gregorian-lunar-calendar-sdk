@@ -84,9 +84,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/opendata/lunardate.php",
-                ["parts"] = {
-                  "opendata",
-                  "lunardate.php",
+                ["segments"] = {
+                  {
+                    ["lit"] = "opendata",
+                  },
+                  {
+                    ["lit"] = "lunardate.php",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -96,6 +100,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.lunarDate`",
+                },
+                ["parts"] = {
+                  "opendata",
+                  "lunardate.php",
                 },
               },
             },

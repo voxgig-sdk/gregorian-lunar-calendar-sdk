@@ -63,9 +63,13 @@ main: kit: entity: lunardate: {
           }
           method: "GET"
           orig: "/opendata/lunardate.php"
-          parts: [
-            "opendata"
-            "lunardate.php"
+          segments: [
+            {
+              lit: "opendata"
+            }
+            {
+              lit: "lunardate.php"
+            }
           ]
           select: {
             exist: [

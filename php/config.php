@@ -110,9 +110,13 @@ class GregorianLunarCalendarConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/opendata/lunardate.php',
-                  'parts' => [
-                    'opendata',
-                    'lunardate.php',
+                  'segments' => [
+                    [
+                      'lit' => 'opendata',
+                    ],
+                    [
+                      'lit' => 'lunardate.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -122,6 +126,10 @@ class GregorianLunarCalendarConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.lunarDate`',
+                  ],
+                  'parts' => [
+                    'opendata',
+                    'lunardate.php',
                   ],
                 ],
               ],
