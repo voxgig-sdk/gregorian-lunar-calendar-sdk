@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar'
+import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar-sdk'
 
 const client = new GregorianLunarCalendarSDK()
 ```
@@ -411,7 +411,7 @@ gregorian-lunar-calendar/
 Import the SDK from the package root:
 
 ```ts
-import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar'
+import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar-sdk'
 ```
 
 ### Entity state

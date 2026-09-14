@@ -105,7 +105,7 @@ local result, err = client:Lunardate():load({ date = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
 | Python | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
 | PHP | `voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go` | `go get github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Lunardate():load({ date = "example" })
 ### TypeScript
 
 ```ts
-import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar'
+import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar-sdk'
 
 const client = new GregorianLunarCalendarSDK()
 
