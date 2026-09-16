@@ -4,7 +4,10 @@ declare(strict_types=1);
 // GregorianLunarCalendar SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class GregorianLunarCalendarFeatures
@@ -14,8 +17,14 @@ class GregorianLunarCalendarFeatures
         switch ($name) {
             case "base":
                 return new GregorianLunarCalendarBaseFeature();
+            case "ratelimit":
+                return new GregorianLunarCalendarRatelimitFeature();
+            case "retry":
+                return new GregorianLunarCalendarRetryFeature();
             case "test":
                 return new GregorianLunarCalendarTestFeature();
+            case "timeout":
+                return new GregorianLunarCalendarTimeoutFeature();
             default:
                 return new GregorianLunarCalendarBaseFeature();
         }
@@ -31,7 +40,10 @@ class GregorianLunarCalendarFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

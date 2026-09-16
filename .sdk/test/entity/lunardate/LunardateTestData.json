@@ -6,7 +6,7 @@
         "isLeapMonth": false,
         "month": "s3e",
         "year": "s3f",
-        "yearCycle": "s40",
+        "yearCycle": 64,
         "zodiac": "s41",
         "id": "LUNARDATE00"
       },
@@ -15,7 +15,7 @@
         "isLeapMonth": false,
         "month": "s7a",
         "year": "s7b",
-        "yearCycle": "s7c",
+        "yearCycle": 124,
         "zodiac": "s7d",
         "id": "LUNARDATE01"
       },
@@ -24,7 +24,7 @@
         "isLeapMonth": false,
         "month": "sb6",
         "year": "sb7",
-        "yearCycle": "sb8",
+        "yearCycle": 184,
         "zodiac": "sb9",
         "id": "LUNARDATE02"
       }
@@ -37,8 +37,195 @@
         "isLeapMonth": false,
         "month": "sf2",
         "year": "sf3",
-        "yearCycle": "sf4",
+        "yearCycle": 244,
         "zodiac": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /opendata/lunardate.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLunarDate",
+        "parameters": [
+          {
+            "description": "Gregorian date in YYYYMMDD format",
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "example": "20240101",
+              "pattern": "^[0-9]{8}$",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "gregorianDate": "2024-01-01",
+                  "lunarDate": {
+                    "day": "二十",
+                    "month": "十一月",
+                    "year": "癸卯",
+                    "yearCycle": 40,
+                    "zodiac": "兔"
+                  }
+                },
+                "schema": {
+                  "description": "Response containing Gregorian to Lunar date conversion",
+                  "properties": {
+                    "gregorianDate": {
+                      "description": "The Gregorian date in YYYY-MM-DD format",
+                      "example": "2024-01-01",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "lunarDate": {
+                      "description": "Lunar calendar date information",
+                      "properties": {
+                        "day": {
+                          "description": "Lunar day in Chinese",
+                          "example": "二十",
+                          "type": "string"
+                        },
+                        "isLeapMonth": {
+                          "description": "Indicates if the lunar month is a leap month",
+                          "example": false,
+                          "type": "boolean"
+                        },
+                        "month": {
+                          "description": "Lunar month in Chinese",
+                          "example": "十一月",
+                          "type": "string"
+                        },
+                        "year": {
+                          "description": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
+                          "example": "癸卯",
+                          "type": "string"
+                        },
+                        "yearCycle": {
+                          "description": "Year in the 60-year cycle",
+                          "example": 40,
+                          "type": "integer"
+                        },
+                        "zodiac": {
+                          "description": "Chinese zodiac animal",
+                          "example": "兔",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "gregorianDate",
+                    "lunarDate"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with Lunar date information"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Invalid date format",
+                  "message": "Date must be in YYYYMMDD format"
+                },
+                "schema": {
+                  "description": "Error response",
+                  "properties": {
+                    "error": {
+                      "description": "Error code or type",
+                      "example": "Invalid request",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "The requested parameter is invalid",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad Request - Invalid date format"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Date not found",
+                  "message": "The requested date is not available in the conversion table"
+                },
+                "schema": {
+                  "description": "Error response",
+                  "properties": {
+                    "error": {
+                      "description": "Error code or type",
+                      "example": "Invalid request",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "The requested parameter is invalid",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Not Found - Date not available in conversion table"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal server error",
+                  "message": "An unexpected error occurred"
+                },
+                "schema": {
+                  "description": "Error response",
+                  "properties": {
+                    "error": {
+                      "description": "Error code or type",
+                      "example": "Invalid request",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "The requested parameter is invalid",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

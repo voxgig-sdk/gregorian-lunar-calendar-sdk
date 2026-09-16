@@ -1,12 +1,18 @@
 # GregorianLunarCalendar SDK feature factory
 
 from gregorianlunarcalendar_sdk.feature.base_feature import GregorianLunarCalendarBaseFeature
+from gregorianlunarcalendar_sdk.feature.ratelimit_feature import GregorianLunarCalendarRatelimitFeature
+from gregorianlunarcalendar_sdk.feature.retry_feature import GregorianLunarCalendarRetryFeature
 from gregorianlunarcalendar_sdk.feature.test_feature import GregorianLunarCalendarTestFeature
+from gregorianlunarcalendar_sdk.feature.timeout_feature import GregorianLunarCalendarTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: GregorianLunarCalendarBaseFeature(),
+    "ratelimit": lambda: GregorianLunarCalendarRatelimitFeature(),
+    "retry": lambda: GregorianLunarCalendarRetryFeature(),
     "test": lambda: GregorianLunarCalendarTestFeature(),
+    "timeout": lambda: GregorianLunarCalendarTimeoutFeature(),
 }
 
 

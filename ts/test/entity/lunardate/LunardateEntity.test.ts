@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GregorianLunarCalendarSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('LunardateEntity', async () => {
 
     const live = 'TRUE' === process.env.GREGORIAN_LUNAR_CALENDAR_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'lunardate.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'lunardate.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"day","req":false,"short":"Lunar day in Chinese","type":"`$STRING`","index$":0},{"active":true,"name":"isLeapMonth","req":false,"short":"Indicates if the lunar month is a leap month","type":"`$BOOLEAN`","index$":1},{"active":true,"name":"month","req":false,"short":"Lunar month in Chinese","type":"`$STRING`","index$":2},{"active":true,"name":"year","req":false,"short":"Lunar year in Chinese Heavenly Stems and Earthly Branches","type":"`$STRING`","index$":3},{"active":true,"name":"yearCycle","req":false,"short":"Year in the 60-year cycle","type":"`$INTEGER`","index$":4},{"active":true,"name":"zodiac","req":false,"short":"Chinese zodiac animal","type":"`$STRING`","index$":5}],"name":"lunardate","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"example":"20240101","kind":"query","name":"date","orig":"date","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /opendata/lunardate.php","json":"{\"operationId\":\"getLunarDate\",\"parameters\":[{\"description\":\"Gregorian date in YYYYMMDD format\",\"in\":\"query\",\"name\":\"date\",\"required\":true,\"schema\":{\"example\":\"20240101\",\"pattern\":\"^[0-9]{8}$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"gregorianDate\":\"2024-01-01\",\"lunarDate\":{\"day\":\"二十\",\"month\":\"十一月\",\"year\":\"癸卯\",\"yearCycle\":40,\"zodiac\":\"兔\"}},\"schema\":{\"description\":\"Response containing Gregorian to Lunar date conversion\",\"properties\":{\"gregorianDate\":{\"description\":\"The Gregorian date in YYYY-MM-DD format\",\"example\":\"2024-01-01\",\"format\":\"date\",\"type\":\"string\"},\"lunarDate\":{\"description\":\"Lunar calendar date information\",\"properties\":{\"day\":{\"description\":\"Lunar day in Chinese\",\"example\":\"二十\",\"type\":\"string\"},\"isLeapMonth\":{\"description\":\"Indicates if the lunar month is a leap month\",\"example\":false,\"type\":\"boolean\"},\"month\":{\"description\":\"Lunar month in Chinese\",\"example\":\"十一月\",\"type\":\"string\"},\"year\":{\"description\":\"Lunar year in Chinese Heavenly Stems and Earthly Branches\",\"example\":\"癸卯\",\"type\":\"string\"},\"yearCycle\":{\"description\":\"Year in the 60-year cycle\",\"example\":40,\"type\":\"integer\"},\"zodiac\":{\"description\":\"Chinese zodiac animal\",\"example\":\"兔\",\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"gregorianDate\",\"lunarDate\"],\"type\":\"object\"}}},\"description\":\"Successful response with Lunar date information\"},\"400\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid date format\",\"message\":\"Date must be in YYYYMMDD format\"},\"schema\":{\"description\":\"Error response\",\"properties\":{\"error\":{\"description\":\"Error code or type\",\"example\":\"Invalid request\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"The requested parameter is invalid\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad Request - Invalid date format\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Date not found\",\"message\":\"The requested date is not available in the conversion table\"},\"schema\":{\"description\":\"Error response\",\"properties\":{\"error\":{\"description\":\"Error code or type\",\"example\":\"Invalid request\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"The requested parameter is invalid\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Not Found - Date not available in conversion table\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Internal server error\",\"message\":\"An unexpected error occurred\"},\"schema\":{\"description\":\"Error response\",\"properties\":{\"error\":{\"description\":\"Error code or type\",\"example\":\"Invalid request\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"The requested parameter is invalid\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/opendata/lunardate.php","segments":[{"lit":"opendata"},{"lit":"lunardate.php"}],"select":{"exist":["date"]},"transform":{"req":"`reqdata`","res":"`body.lunarDate`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"lunardate","name__orig":"lunardate","Name":"Lunardate","name_":"lunardate","name-":"lunardate","NAME":"LUNARDATE","index$":0}, {"active":true,"entity":"lunardate","key$":"BasicLunardateFlow","kind":"basic","name":"BasicLunardateFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"lunardate_ref01","srcdatavar":"lunardate_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-lunardate_ref01"}}],"index$":0}]}, 'Lunardate')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID': idmap,
     'GREGORIAN_LUNAR_CALENDAR_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GREGORIAN_LUNAR_CALENDAR_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GREGORIAN_LUNAR_CALENDAR_TEST_LUNARDATE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GregorianLunarCalendarSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GREGORIAN_LUNAR_CALENDAR_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
