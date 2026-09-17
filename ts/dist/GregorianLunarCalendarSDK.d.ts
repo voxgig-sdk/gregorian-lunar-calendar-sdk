@@ -1,4 +1,4 @@
-import { LunardateEntity } from './entity/LunardateEntity';
+import { LunarDateEntity } from './entity/LunarDateEntity';
 export type * from './GregorianLunarCalendarTypes';
 import { inspect } from 'node:util';
 import type { Context, Feature } from './types';
@@ -44,7 +44,7 @@ declare class GregorianLunarCalendarSDK {
         data?: undefined;
     }>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
-    Lunardate(entopts?: Record<string, any>): LunardateEntity;
+    LunarDate(entopts?: Record<string, any>): LunarDateEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): GregorianLunarCalendarSDK;
     tester(testopts?: any, sdkopts?: any): GregorianLunarCalendarSDK;
     toJSON(): {

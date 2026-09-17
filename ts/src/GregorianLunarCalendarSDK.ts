@@ -1,6 +1,6 @@
 // GregorianLunarCalendar Ts SDK
 
-import { LunardateEntity } from './entity/LunardateEntity'
+import { LunarDateEntity } from './entity/LunarDateEntity'
 
 export type * from './GregorianLunarCalendarTypes'
 
@@ -297,12 +297,12 @@ class GregorianLunarCalendarSDK {
 
 
 
-  // Entity access: `client.Lunardate().list()` / `client.Lunardate().load({ id })`.
+  // Entity access: `client.LunarDate().list()` / `client.LunarDate().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  Lunardate(entopts?: Record<string, any>) {
+  LunarDate(entopts?: Record<string, any>) {
     const self = this
-    return new LunardateEntity(self, entopts)
+    return new LunarDateEntity(self, entopts)
   }
 
 

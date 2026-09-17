@@ -4,7 +4,7 @@
 
 The Python SDK for the GregorianLunarCalendar API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Lunardate()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.LunarDate()` — each
 carrying a small, uniform set of operations (`load`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -42,7 +42,7 @@ client = GregorianLunarCalendarSDK()
 
 ```python
 try:
-    lunardate = client.Lunardate().load({"date": "example_date"})
+    lunardate = client.LunarDate().load({"date": "example_date"})
     print(lunardate)
 except Exception as err:
     print(f"load failed: {err}")
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    lunardate = client.Lunardate().load({"date": "example"})
+    lunardate = client.LunarDate().load({"date": "example"})
     print(lunardate)
 except Exception as err:
     print(f"load failed: {err}")
@@ -124,7 +124,7 @@ client = GregorianLunarCalendarSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-lunardate = client.Lunardate().load({"date": "example"})
+lunardate = client.LunarDate().load({"date": "example"})
 # lunardate contains the mock response record
 ```
 
@@ -201,7 +201,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Lunardate` | `(data) -> LunardateEntity` | Create a Lunardate entity instance. |
+| `LunarDate` | `(data) -> LunarDateEntity` | Create a LunarDate entity instance. |
 
 ### Entity interface
 
@@ -237,7 +237,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
 
-#### Lunardate
+#### LunarDate
 
 | Field | Description |
 | --- | --- |
@@ -257,9 +257,9 @@ API path: `/opendata/lunardate.php`
 ## Entities
 
 
-### Lunardate
+### LunarDate
 
-Create an instance: `lunardate = client.Lunardate()`
+Create an instance: `lunar_date = client.LunarDate()`
 
 #### Operations
 
@@ -281,7 +281,7 @@ Create an instance: `lunardate = client.Lunardate()`
 #### Example: Load
 
 ```python
-lunardate = client.Lunardate().load({"date": "date"})
+lunar_date = client.LunarDate().load({"date": "date"})
 ```
 
 ## Features
@@ -427,6 +427,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── gregorianlunarcalendar_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations
@@ -444,7 +445,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-lunardate = client.Lunardate()
+lunardate = client.LunarDate()
 lunardate.load({"date": "example"})
 
 # lunardate.data_get() now returns the lunardate data from the last load

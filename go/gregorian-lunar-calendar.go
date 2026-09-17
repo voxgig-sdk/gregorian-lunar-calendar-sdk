@@ -41,8 +41,8 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewLunardateEntityFunc = func(client *core.GregorianLunarCalendarSDK, entopts map[string]any) core.GregorianLunarCalendarEntity {
-		return entity.NewLunardateEntity(client, entopts)
+	core.NewLunarDateEntityFunc = func(client *core.GregorianLunarCalendarSDK, entopts map[string]any) core.GregorianLunarCalendarEntity {
+		return entity.NewLunarDateEntity(client, entopts)
 	}
 }
 

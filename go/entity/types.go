@@ -12,8 +12,8 @@ import (
 	"github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go/core"
 )
 
-// Lunardate is the typed data model for the lunardate entity.
-type Lunardate struct {
+// LunarDate is the typed data model for the lunar_date entity.
+type LunarDate struct {
 	Day *string `json:"day,omitempty"`
 	IsLeapMonth *bool `json:"isLeapMonth,omitempty"`
 	Month *string `json:"month,omitempty"`
@@ -22,8 +22,8 @@ type Lunardate struct {
 	Zodiac *string `json:"zodiac,omitempty"`
 }
 
-// LunardateLoadMatch is the typed request payload for Lunardate.LoadTyped.
-type LunardateLoadMatch struct {
+// LunarDateLoadMatch is the typed request payload for LunarDate.LoadTyped.
+type LunarDateLoadMatch struct {
 	Date string `json:"date"`
 }
 

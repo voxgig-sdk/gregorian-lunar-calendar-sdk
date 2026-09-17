@@ -4,7 +4,7 @@
 
 The Lua SDK for the GregorianLunarCalendar API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:Lunardate()` — each with the same small set of operations (`load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:LunarDate()` — each with the same small set of operations (`load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a lunardate
 
 ```lua
-local lunardate, err = client:Lunardate():load({ date = "example_date" })
+local lunardate, err = client:LunarDate():load({ date = "example_date" })
 if err then error(err) end
 print(lunardate)
 ```
@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local lunardate, err = client:Lunardate():load({ date = "example" })
+local lunardate, err = client:LunarDate():load({ date = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Lunardate():load({ date = "example" })
+local result, err = client:LunarDate():load({ date = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -185,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Lunardate` | `(data) -> LunardateEntity` | Create a Lunardate entity instance. |
+| `LunarDate` | `(data) -> LunarDateEntity` | Create a LunarDate entity instance. |
 
 ### Entity interface
 
@@ -212,16 +212,16 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local lunardate, err = client:Lunardate():load()
+    local lunar_date, err = client:LunarDate():load()
     if err then error(err) end
-    -- lunardate is the loaded record
+    -- lunar_date is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
 
 ### Entities
 
-#### Lunardate
+#### LunarDate
 
 | Field | Description |
 | --- | --- |
@@ -241,9 +241,9 @@ API path: `/opendata/lunardate.php`
 ## Entities
 
 
-### Lunardate
+### LunarDate
 
-Create an instance: `local lunardate = client:Lunardate(nil)`
+Create an instance: `local lunar_date = client:LunarDate(nil)`
 
 #### Operations
 
@@ -265,7 +265,7 @@ Create an instance: `local lunardate = client:Lunardate(nil)`
 #### Example: Load
 
 ```lua
-local lunardate, err = client:Lunardate():load({ date = "date" })
+local lunar_date, err = client:LunarDate():load({ date = "date" })
 ```
 
 ## Features
@@ -411,6 +411,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── gregorian-lunar-calendar_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations
@@ -429,7 +430,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local lunardate = client:Lunardate()
+local lunardate = client:LunarDate()
 lunardate:load({ date = "example" })
 
 -- lunardate:data_get() now returns the lunardate data from the last load

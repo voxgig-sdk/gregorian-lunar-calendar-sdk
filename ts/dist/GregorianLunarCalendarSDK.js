@@ -2,7 +2,7 @@
 // GregorianLunarCalendar Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.GregorianLunarCalendarSDK = exports.GregorianLunarCalendarEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
-const LunardateEntity_1 = require("./entity/LunardateEntity");
+const LunarDateEntity_1 = require("./entity/LunarDateEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
 Object.defineProperty(exports, "config", { enumerable: true, get: function () { return Config_1.config; } });
@@ -225,12 +225,12 @@ class GregorianLunarCalendarSDK {
         }
         return res;
     }
-    // Entity access: `client.Lunardate().list()` / `client.Lunardate().load({ id })`.
+    // Entity access: `client.LunarDate().list()` / `client.LunarDate().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Lunardate(entopts) {
+    LunarDate(entopts) {
         const self = this;
-        return new LunardateEntity_1.LunardateEntity(self, entopts);
+        return new LunarDateEntity_1.LunarDateEntity(self, entopts);
     }
     static test(testoptsarg, sdkoptsarg) {
         const struct = stdutil.struct;

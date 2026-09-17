@@ -20,14 +20,14 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as a small set of **semantic entities** — Lunardate — that you
+This SDK exposes the API as a small set of **semantic entities** — LunarDate — that you
 call directly, instead of assembling URL paths and query strings. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`load`):
 
 ```ts
 const client = new GregorianLunarCalendarSDK()
-const lunardate = await client.Lunardate().load({ date: "example" })
+const lunardate = await client.LunarDate().load({ date: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -46,13 +46,13 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = GregorianLunarCalendarSDK.test({
   entity: {
-    lunardate: {
+    lunar_date: {
       test01: { id: 'test01' },
     },
   },
 })
-const lunardate = await client.Lunardate().load({ date: 'example_date' })
-// lunardate is the Lunardate entity, populated with mock data
+const lunardate = await client.LunarDate().load({ date: 'example_date' })
+// lunardate is the LunarDate entity, populated with mock data
 // — call lunardate.data() for the record itself
 console.log(lunardate)
 ```
@@ -61,7 +61,7 @@ console.log(lunardate)
 
 ```python
 client = GregorianLunarCalendarSDK.test()
-lunardate = client.Lunardate().load({"date": "example"})
+lunardate = client.LunarDate().load({"date": "example"})
 print(lunardate)
 ```
 
@@ -72,14 +72,14 @@ print(lunardate)
 $client = GregorianLunarCalendarSDK::test([
     "entity" => ["lunardate" => ["test01" => []]],
 ]);
-$lunardate = $client->Lunardate()->load(["date" => "example"]);
+$lunardate = $client->LunarDate()->load(["date" => "example"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Lunardate(nil).Load(
+result, err := client.LunarDate(nil).Load(
     nil, nil,
 )
 ```
@@ -91,26 +91,26 @@ result, err := client.Lunardate(nil).Load(
 client = GregorianLunarCalendarSDK.test({
   "entity" => { "lunardate" => { "test01" => {} } },
 })
-lunardate = client.Lunardate.load({ "date" => "example" })
+lunardate = client.LunarDate.load({ "date" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Lunardate():load({ date = "example" })
+local result, err = client:LunarDate():load({ date = "example" })
 ```
 
 ## Packages
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
-| Python | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
-| PHP | `voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| TypeScript | `@voxgig-sdk/gregorian-lunar-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/tags) |
+| Python | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/tags) |
+| PHP | `voxgig-sdk/gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go` | `go get github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go@latest` |
-| Ruby | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
-| Lua | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases) |
+| Ruby | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/tags) |
+| Lua | `voxgig-sdk-gregorian-lunar-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go-cli` | `go install github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go-cli/cmd/gregorian-lunar-calendar@latest` |
 | Go MCP server | `github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go-mcp` | `go get github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go-mcp@latest` |
 
@@ -123,8 +123,8 @@ import { GregorianLunarCalendarSDK } from '@voxgig-sdk/gregorian-lunar-calendar-
 
 const client = new GregorianLunarCalendarSDK()
 
-// Load lunardate data (returns a Lunardate)
-const lunardate = await client.Lunardate().load()
+// Load lunardate data (returns a LunarDate)
+const lunardate = await client.LunarDate().load()
 console.log(lunardate)
 ```
 
@@ -166,7 +166,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Lunardate** | The Lunardate entity (load). | `/opendata/lunardate.php` |
+| **LunarDate** | The LunarDate entity (load). | `/opendata/lunardate.php` |
 
 The operations available across these entities are **load** — see each entity's
 own list above for exactly which it supports.
@@ -182,7 +182,7 @@ client = GregorianLunarCalendarSDK()
 
 
 # Load a specific lunardate (returns the record, raises on error)
-lunardate = client.Lunardate().load({"date": "example_date"})
+lunardate = client.LunarDate().load({"date": "example_date"})
 print(lunardate)
 ```
 
@@ -196,7 +196,7 @@ $client = new GregorianLunarCalendarSDK();
 
 
 // Load a specific lunardate (returns the ENTITY; call data_get() for the record; throws on error)
-$lunardate = $client->Lunardate()->load(["date" => "example_date"]);
+$lunardate = $client->LunarDate()->load(["date" => "example_date"]);
 print_r($lunardate->data_get());
 ```
 
@@ -208,11 +208,11 @@ import sdk "github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/go"
 client := sdk.New()
 
 // Load lunardate data
-lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "example_date"}, nil)
+lunarDate, err := client.LunarDate(nil).Load(map[string]any{"date": "example_date"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(lunardate)
+fmt.Println(lunarDate)
 ```
 
 ### Ruby
@@ -224,7 +224,7 @@ client = GregorianLunarCalendarSDK.new
 
 
 # Load a specific lunardate (returns the ENTITY; call data_get for the record)
-lunardate = client.Lunardate.load({ "date" => "example_date" })
+lunardate = client.LunarDate.load({ "date" => "example_date" })
 puts lunardate
 ```
 
@@ -237,7 +237,7 @@ local client = sdk.new()
 
 
 -- Load a specific lunardate
-local lunardate, err = client:Lunardate():load({ date = "example_date" })
+local lunardate, err = client:LunarDate():load({ date = "example_date" })
 print(lunardate)
 ```
 

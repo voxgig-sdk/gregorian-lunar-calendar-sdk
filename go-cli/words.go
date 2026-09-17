@@ -89,8 +89,8 @@ func runOp(client *sdk.GregorianLunarCalendarSDK, op string, query *eng.Value, e
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.GregorianLunarCalendarSDK, name string) (sdk.GregorianLunarCalendarEntity, error) {
 	switch strings.ToLower(name) {
-	case "lunardate":
-		return client.Lunardate(nil), nil
+	case "lunar_date":
+		return client.LunarDate(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

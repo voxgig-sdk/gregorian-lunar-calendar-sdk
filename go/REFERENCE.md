@@ -47,9 +47,9 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `Lunardate(data map[string]any) GregorianLunarCalendarEntity`
+#### `LunarDate(data map[string]any) GregorianLunarCalendarEntity`
 
-Create a new `Lunardate` entity instance. Pass `nil` for no initial data.
+Create a new `LunarDate` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -87,11 +87,11 @@ same parameters as `Direct()`.
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```go
-lunardate := client.Lunardate(nil)
-fmt.Println(lunardate.GetName()) // "lunardate"
+lunarDate := client.LunarDate(nil)
+fmt.Println(lunarDate.GetName()) // "lunar_date"
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ fmt.Println(lunardate.GetName()) // "lunardate"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Lunardate(nil).Load(map[string]any{"date": "date"}, nil)
+result, err := client.LunarDate(nil).Load(map[string]any{"date": "date"}, nil)
 if err != nil {
     panic(err)
 }
@@ -133,7 +133,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `LunardateEntity` instance with the same client and
+Create a new `LunarDateEntity` instance with the same client and
 options.
 
 #### `GetName() string`

@@ -16,7 +16,7 @@ import (
 // reqdata map passed through to the SDK. For load, `query` should be
 // `{"id": <value>}`. For list, omit `query` or pass an empty map.
 type Args struct {
-	Entity string         `json:"entity" jsonschema:"lunardate"`
+	Entity string         `json:"entity" jsonschema:"lunar_date"`
 	Query  map[string]any `json:"query,omitempty" jsonschema:"optional match map e.g. {\"id\":1} for load, omit for list"`
 }
 
@@ -77,8 +77,8 @@ func runOp(client *sdk.GregorianLunarCalendarSDK, op string, args Args) (*mcp.Ca
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.GregorianLunarCalendarSDK, name string) (sdk.GregorianLunarCalendarEntity, error) {
 	switch strings.ToLower(name) {
-	case "lunardate":
-		return client.Lunardate(nil), nil
+	case "lunar_date":
+		return client.LunarDate(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

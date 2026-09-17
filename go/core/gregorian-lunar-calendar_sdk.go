@@ -338,11 +338,11 @@ func (sdk *GregorianLunarCalendarSDK) Graphql(
 }
 
 
-// Lunardate returns a Lunardate entity bound to this client.
-// Idiomatic usage: client.Lunardate(nil).List(nil, nil) or
-// client.Lunardate(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *GregorianLunarCalendarSDK) Lunardate(data map[string]any) GregorianLunarCalendarEntity {
-	return NewLunardateEntityFunc(sdk, data)
+// LunarDate returns a LunarDate entity bound to this client.
+// Idiomatic usage: client.LunarDate(nil).List(nil, nil) or
+// client.LunarDate(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *GregorianLunarCalendarSDK) LunarDate(data map[string]any) GregorianLunarCalendarEntity {
+	return NewLunarDateEntityFunc(sdk, data)
 }
 
 

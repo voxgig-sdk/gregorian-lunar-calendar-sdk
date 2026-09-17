@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewLunardateEntityFunc func(client *GregorianLunarCalendarSDK, entopts map[string]any) GregorianLunarCalendarEntity
+var NewLunarDateEntityFunc func(client *GregorianLunarCalendarSDK, entopts map[string]any) GregorianLunarCalendarEntity
 

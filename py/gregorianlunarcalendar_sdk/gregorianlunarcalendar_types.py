@@ -16,7 +16,7 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Lunardate(TypedDict, total=False):
+class LunarDate(TypedDict, total=False):
     day: str
     isLeapMonth: bool
     month: str
@@ -25,5 +25,5 @@ class Lunardate(TypedDict, total=False):
     zodiac: str
 
 
-class LunardateLoadMatch(TypedDict):
+class LunarDateLoadMatch(TypedDict):
     date: str

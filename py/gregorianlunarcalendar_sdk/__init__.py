@@ -307,10 +307,10 @@ class GregorianLunarCalendarSDK:
         return res
 
 
-    def Lunardate(self, data=None) -> "LunardateEntity":
-        """Entity factory: client.Lunardate().list() / client.Lunardate().load({"id": ...})."""
-        from gregorianlunarcalendar_sdk.entity.lunardate_entity import LunardateEntity
-        return LunardateEntity(self, data)
+    def LunarDate(self, data=None) -> "LunarDateEntity":
+        """Entity factory: client.LunarDate().list() / client.LunarDate().load({"id": ...})."""
+        from gregorianlunarcalendar_sdk.entity.lunar_date_entity import LunarDateEntity
+        return LunarDateEntity(self, data)
 
 
 
@@ -340,4 +340,4 @@ class GregorianLunarCalendarSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from gregorianlunarcalendar_sdk.entity.lunardate_entity import LunardateEntity
+    from gregorianlunarcalendar_sdk.entity.lunar_date_entity import LunarDateEntity

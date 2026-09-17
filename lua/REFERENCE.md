@@ -40,9 +40,9 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `Lunardate(data)`
+#### `LunarDate(data)`
 
-Create a new `Lunardate` entity instance. Pass `nil` for no initial data.
+Create a new `LunarDate` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -80,10 +80,10 @@ same parameters as `direct()`.
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```lua
-local lunardate = client:Lunardate(nil)
+local lunar_date = client:LunarDate(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local lunardate = client:Lunardate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Lunardate():load({ date = "date" })
+local result, err = client:LunarDate():load({ date = "date" })
 ```
 
 ### Common Methods
@@ -127,7 +127,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `LunardateEntity` instance with the same client and
+Create a new `LunarDateEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

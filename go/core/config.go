@@ -83,11 +83,11 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
-				"lunardate": map[string]any{},
+				"lunar_date": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
-			"lunardate": map[string]any{
+			"lunar_date": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "day",
@@ -120,7 +120,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
-				"name": "lunardate",
+				"name": "lunar_date",
 				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",

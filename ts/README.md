@@ -5,7 +5,7 @@
 The TypeScript SDK for the GregorianLunarCalendar API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.Lunardate()` — each with a small set of operations (`load`)
+`client.LunarDate()` — each with a small set of operations (`load`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -39,7 +39,7 @@ const client = new GregorianLunarCalendarSDK()
 
 ```ts
 try {
-  const lunardate = await client.Lunardate().load({ date: 'example_date' })
+  const lunardate = await client.LunarDate().load({ date: 'example_date' })
   console.log(lunardate)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const lunardate = await client.Lunardate().load({ date: "example" })
+  const lunardate = await client.LunarDate().load({ date: "example" })
   console.log(lunardate)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GregorianLunarCalendarSDK.test()
 
-const lunardate = await client.Lunardate().load({ date: 'example_date' })
+const lunardate = await client.LunarDate().load({ date: 'example_date' })
 // lunardate is the entity, populated with mock response data
 // — call lunardate.data() for the record itself
 console.log(lunardate)
@@ -138,7 +138,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Lunardate()
+const entity = client.LunarDate()
 
 // First call runs the operation and stores its result
 await entity.load({ date: 'example_date' })
@@ -221,7 +221,7 @@ new GregorianLunarCalendarSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Lunardate(data?)` | `LunardateEntity` | Create a Lunardate entity instance. |
+| `LunarDate(data?)` | `LunarDateEntity` | Create a LunarDate entity instance. |
 | `tester(testopts?, sdkopts?)` | `GregorianLunarCalendarSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -286,7 +286,7 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### Lunardate
+#### LunarDate
 
 | Field | Description |
 | --- | --- |
@@ -306,9 +306,9 @@ API path: `/opendata/lunardate.php`
 ## Entities
 
 
-### Lunardate
+### LunarDate
 
-Create an instance: `const lunardate = client.Lunardate()`
+Create an instance: `const lunar_date = client.LunarDate()`
 
 #### Operations
 
@@ -330,7 +330,7 @@ Create an instance: `const lunardate = client.Lunardate()`
 #### Example: Load
 
 ```ts
-const lunardate = await client.Lunardate().load({ date: 'date' })
+const lunar_date = await client.LunarDate().load({ date: 'date' })
 ```
 
 ## Features
@@ -487,7 +487,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const lunardate = client.Lunardate()
+const lunardate = client.LunarDate()
 await lunardate.load({ date: "example" })
 
 // lunardate.data() now returns the lunardate data from the last `load`

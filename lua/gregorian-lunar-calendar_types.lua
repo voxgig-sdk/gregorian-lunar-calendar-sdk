@@ -6,7 +6,7 @@
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
 
----@class Lunardate
+---@class LunarDate
 ---@field day? string
 ---@field isLeapMonth? boolean
 ---@field month? string
@@ -14,7 +14,7 @@
 ---@field yearCycle? number
 ---@field zodiac? string
 
----@class LunardateLoadMatch
+---@class LunarDateLoadMatch
 ---@field date string
 
 local M = {}

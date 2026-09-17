@@ -289,10 +289,10 @@ class GregorianLunarCalendarSDK
   end
 
 
-  # Canonical facade: client.Lunardate.list / client.Lunardate.load({ "id" => ... })
-  def Lunardate(data = nil)
-    require_relative 'entity/lunardate_entity'
-    LunardateEntity.new(self, data)
+  # Canonical facade: client.LunarDate.list / client.LunarDate.load({ "id" => ... })
+  def LunarDate(data = nil)
+    require_relative 'entity/lunar_date_entity'
+    LunarDateEntity.new(self, data)
   end
 
 

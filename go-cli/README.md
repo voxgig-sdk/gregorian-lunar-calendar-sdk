@@ -19,15 +19,15 @@ make build
 export GREGORIAN_LUNAR_CALENDAR_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./gregorian-lunar-calendar-cli load 1 lunardate            # {id:1} shorthand
-./gregorian-lunar-calendar-cli load '{id:1}' lunardate       # explicit match map
+./gregorian-lunar-calendar-cli load 1 lunar_date            # {id:1} shorthand
+./gregorian-lunar-calendar-cli load '{id:1}' lunar_date       # explicit match map
 
 # 5. Override the API base URL for a single call
-GREGORIAN_LUNAR_CALENDAR_BASE=https://api.example.com ./gregorian-lunar-calendar-cli load 1 lunardate
+GREGORIAN_LUNAR_CALENDAR_BASE=https://api.example.com ./gregorian-lunar-calendar-cli load 1 lunar_date
 
 # 6. No arguments -> interactive REPL
 ./gregorian-lunar-calendar-cli
-gregorian-lunar-calendar> load 1 lunardate
+gregorian-lunar-calendar> load 1 lunar_date
 gregorian-lunar-calendar> /quit
 ```
 
@@ -53,7 +53,7 @@ gregorian-lunar-calendar> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/gregorian-lunar-calendar-cli load 1 lunardate
+   ./dist/*/gregorian-lunar-calendar-cli load 1 lunar_date
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -66,8 +66,8 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### Load a single record
 
 ```sh
-./gregorian-lunar-calendar-cli load 1 lunardate          # scalar shorthand for {id:1}
-./gregorian-lunar-calendar-cli load '{id:1}' lunardate     # explicit match map
+./gregorian-lunar-calendar-cli load 1 lunar_date          # scalar shorthand for {id:1}
+./gregorian-lunar-calendar-cli load '{id:1}' lunar_date     # explicit match map
 ```
 
 The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
@@ -80,7 +80,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export GREGORIAN_LUNAR_CALENDAR_APIKEY=sk_live_xxx            # API key
 export GREGORIAN_LUNAR_CALENDAR_BASE=https://api.example.com  # optional: override the API base URL
-./gregorian-lunar-calendar-cli load 1 lunardate
+./gregorian-lunar-calendar-cli load 1 lunar_date
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -92,7 +92,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./gregorian-lunar-calendar-cli
-gregorian-lunar-calendar> load 1 lunardate
+gregorian-lunar-calendar> load 1 lunar_date
 gregorian-lunar-calendar> /help
 gregorian-lunar-calendar> /quit
 ```
@@ -119,7 +119,7 @@ The CLI registers these boru words, each bound to the SDK:
 |----------|-----------------------------------------------|--------------------------------|
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `lunardate`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `lunar_date`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -162,7 +162,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 1 entity this SDK exposes (any is valid as `<entity>`):
 
-lunardate
+lunar_date
 
 ## Explanation
 

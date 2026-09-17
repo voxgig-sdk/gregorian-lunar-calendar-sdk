@@ -4,7 +4,7 @@
 
 The PHP SDK for the GregorianLunarCalendar API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Lunardate()` — with named operations (`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->LunarDate()` — with named operations (`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -35,8 +35,8 @@ $client = new GregorianLunarCalendarSDK();
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the Lunardate record (throws on error).
-    $lunardate = $client->Lunardate()->load(["date" => "example_date"]);
+    // load() returns the ENTITY — call data_get() for the LunarDate record (throws on error).
+    $lunardate = $client->LunarDate()->load(["date" => "example_date"]);
     print_r($lunardate->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $lunardate = $client->Lunardate()->load(["date" => "example"]);
+    $lunardate = $client->LunarDate()->load(["date" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,7 +125,7 @@ $client = GregorianLunarCalendarSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$lunardate = $client->Lunardate()->load(["date" => "example"]);
+$lunardate = $client->LunarDate()->load(["date" => "example"]);
 print_r($lunardate->data_get());
 ```
 
@@ -205,7 +205,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Lunardate` | `($data): LunardateEntity` | Create a Lunardate entity instance. |
+| `LunarDate` | `($data): LunarDateEntity` | Create a LunarDate entity instance. |
 
 ### Entity interface
 
@@ -241,7 +241,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### Lunardate
+#### LunarDate
 
 | Field | Description |
 | --- | --- |
@@ -261,9 +261,9 @@ API path: `/opendata/lunardate.php`
 ## Entities
 
 
-### Lunardate
+### LunarDate
 
-Create an instance: `$lunardate = $client->Lunardate();`
+Create an instance: `$lunar_date = $client->LunarDate();`
 
 #### Operations
 
@@ -285,8 +285,8 @@ Create an instance: `$lunardate = $client->Lunardate();`
 #### Example: Load
 
 ```php
-// load() returns the ENTITY — call data_get() for the Lunardate record (throws on error).
-$lunardate = $client->Lunardate()->load(["date" => "date"]);
+// load() returns the ENTITY — call data_get() for the LunarDate record (throws on error).
+$lunar_date = $client->LunarDate()->load(["date" => "date"]);
 ```
 
 ## Features
@@ -432,6 +432,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── gregorianlunarcalendar_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations
@@ -450,7 +451,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$lunardate = $client->Lunardate();
+$lunardate = $client->LunarDate();
 $lunardate->load(["date" => "example"]);
 
 // $lunardate->data_get() now returns the lunardate data from the last load

@@ -43,7 +43,7 @@ class ReadmeExamplesTest < Minitest::Test
 
   # Entity accessor (client.<Name>) => fixture storage key (lowercase name).
   ENTITIES = {
-    "Lunardate" => "lunardate",
+    "LunarDate" => "lunar_date",
   }
 
   # Documented SDK method names — used only to recognise the NARROW

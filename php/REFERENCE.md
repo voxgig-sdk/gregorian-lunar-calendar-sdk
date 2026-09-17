@@ -41,9 +41,9 @@ $client = GregorianLunarCalendarSDK::test();
 
 ### Instance Methods
 
-#### `Lunardate($data = null)`
+#### `LunarDate($data = null)`
 
-Create a new `LunardateEntity` instance. Pass `null` for no initial data.
+Create a new `LunarDateEntity` instance. Pass `null` for no initial data.
 
 #### `options_map(): array`
 
@@ -82,10 +82,10 @@ Prepare a fetch definition without sending the request. Returns the
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```php
-$lunardate = $client->Lunardate();
+$lunar_date = $client->LunarDate();
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ $lunardate = $client->Lunardate();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Lunardate()->load(["date" => "date"]);
+$result = $client->LunarDate()->load(["date" => "date"]);
 ```
 
 ### Common Methods
@@ -127,9 +127,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): LunardateEntity`
+#### `make(): LunarDateEntity`
 
-Create a new `LunardateEntity` instance with the same client and
+Create a new `LunarDateEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

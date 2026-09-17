@@ -105,11 +105,11 @@ class GregorianLunarCalendarConfig
           'content-type' => 'application/json',
         ],
                 "entity" => [
-                    "lunardate" => [],
+                    "lunar_date" => [],
                 ],
             ],
             "entity" => [
-        'lunardate' => [
+        'lunar_date' => [
           'fields' => [
             [
               'name' => 'day',
@@ -142,7 +142,7 @@ class GregorianLunarCalendarConfig
               'type' => '`$STRING`',
             ],
           ],
-          'name' => 'lunardate',
+          'name' => 'lunar_date',
           'op' => [
             'load' => [
               'input' => 'data',

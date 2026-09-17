@@ -4,7 +4,7 @@
 
 The Golang SDK for the GregorianLunarCalendar API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.Lunardate(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.LunarDate(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single lunardate — the value is the loaded record.
-    lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "example_date"}, nil)
+    // Load a single lunarDate — the value is the loaded record.
+    lunarDate, err := client.LunarDate(nil).Load(map[string]any{"date": "example_date"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(lunardate)
+    fmt.Println(lunarDate)
 }
 ```
 
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "example"}, nil)
+lunardate, err := client.LunarDate(nil).Load(map[string]any{"date": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-lunardate, err := client.Lunardate(nil).Load(
+lunarDate, err := client.LunarDate(nil).Load(
     map[string]any{"date": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(lunardate) // the returned mock data
+fmt.Println(lunarDate) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -218,7 +218,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Lunardate` | `(data map[string]any) GregorianLunarCalendarEntity` | Create a Lunardate entity instance. |
+| `LunarDate` | `(data map[string]any) GregorianLunarCalendarEntity` | Create a LunarDate entity instance. |
 
 ### Entity interface (GregorianLunarCalendarEntity)
 
@@ -245,16 +245,16 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    lunardate, err := client.Lunardate(nil).Load(nil, nil)
+    lunarDate, err := client.LunarDate(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // lunardate is the returned record
+    // lunarDate is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
-#### Lunardate
+#### LunarDate
 
 | Field | Description |
 | --- | --- |
@@ -274,9 +274,9 @@ API path: `/opendata/lunardate.php`
 ## Entities
 
 
-### Lunardate
+### LunarDate
 
-Create an instance: `lunardate := client.Lunardate(nil)`
+Create an instance: `lunarDate := client.LunarDate(nil)`
 
 #### Operations
 
@@ -298,11 +298,11 @@ Create an instance: `lunardate := client.Lunardate(nil)`
 #### Example: Load
 
 ```go
-lunardate, err := client.Lunardate(nil).Load(map[string]any{"date": "date"}, nil)
+lunarDate, err := client.LunarDate(nil).Load(map[string]any{"date": "date"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(lunardate) // the loaded record
+fmt.Println(lunarDate) // the loaded record
 ```
 
 ## Features
@@ -463,7 +463,7 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-lunardate := client.Lunardate(nil)
+lunardate := client.LunarDate(nil)
 lunardate.Load(map[string]any{"date": "example"}, nil)
 
 // lunardate.Data() now returns the lunardate data from the last load

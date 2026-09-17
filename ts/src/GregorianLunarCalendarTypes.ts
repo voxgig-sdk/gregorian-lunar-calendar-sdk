@@ -5,7 +5,7 @@
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
-export interface Lunardate {
+export interface LunarDate {
   day?: string
   isLeapMonth?: boolean
   month?: string
@@ -14,7 +14,7 @@ export interface Lunardate {
   zodiac?: string
 }
 
-export interface LunardateLoadMatch {
+export interface LunarDateLoadMatch {
   date: string
 }
 

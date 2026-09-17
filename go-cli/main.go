@@ -20,7 +20,7 @@ import (
 const prompt = "gregorian-lunar-calendar"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "lunardate"
+const entitiesHelp = "lunar_date"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

@@ -341,21 +341,21 @@ class GregorianLunarCalendarSDK
     }
 
 
-    private $_lunardate = null;
+    private $_lunar_date = null;
 
-    // Canonical facade: $client->Lunardate()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->lunardate()
+    // Canonical facade: $client->LunarDate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->lunar_date()
     // resolves here too.
-    public function Lunardate($data = null)
+    public function LunarDate($data = null)
     {
-        require_once __DIR__ . '/entity/lunardate_entity.php';
+        require_once __DIR__ . '/entity/lunar_date_entity.php';
         if ($data === null) {
-            if ($this->_lunardate === null) {
-                $this->_lunardate = new LunardateEntity($this, null);
+            if ($this->_lunar_date === null) {
+                $this->_lunar_date = new LunarDateEntity($this, null);
             }
-            return $this->_lunardate;
+            return $this->_lunar_date;
         }
-        return new LunardateEntity($this, $data);
+        return new LunarDateEntity($this, $data);
     }
 
 

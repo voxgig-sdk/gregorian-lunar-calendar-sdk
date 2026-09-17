@@ -79,11 +79,11 @@ local function make_config()
         ["content-type"] = "application/json",
       },
       entity = {
-        ["lunardate"] = {},
+        ["lunar_date"] = {},
       },
     },
     entity = {
-      ["lunardate"] = {
+      ["lunar_date"] = {
         ["fields"] = {
           {
             ["name"] = "day",
@@ -116,7 +116,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
-        ["name"] = "lunardate",
+        ["name"] = "lunar_date",
         ["op"] = {
           ["load"] = {
             ["input"] = "data",

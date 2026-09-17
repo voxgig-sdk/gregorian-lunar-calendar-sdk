@@ -41,9 +41,9 @@ client = GregorianLunarCalendarSDK.test
 
 ### Instance Methods
 
-#### `Lunardate(data = nil)`
+#### `LunarDate(data = nil)`
 
-Create a new `Lunardate` entity instance. Pass `nil` for no initial data.
+Create a new `LunarDate` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -83,10 +83,10 @@ same parameters as `direct()`. Raises on error.
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```ruby
-lunardate = client.Lunardate
+lunar_date = client.LunarDate
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ lunardate = client.Lunardate
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Lunardate.load({ "date" => "date" })
+result = client.LunarDate.load({ "date" => "date" })
 ```
 
 ### Common Methods
@@ -130,7 +130,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `LunardateEntity` instance with the same client and
+Create a new `LunarDateEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

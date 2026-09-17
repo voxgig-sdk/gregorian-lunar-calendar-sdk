@@ -48,9 +48,9 @@ const client = GregorianLunarCalendarSDK.test()
 
 ### Instance Methods
 
-#### `Lunardate(data?: object)`
+#### `LunarDate(data?: object)`
 
-Create a new `Lunardate` entity instance.
+Create a new `LunarDate` entity instance.
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Create a new `Lunardate` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `LunardateEntity` instance.
+**Returns:** `LunarDateEntity` instance.
 
 #### `options()`
 
@@ -106,10 +106,10 @@ Alias for `GregorianLunarCalendarSDK.test()`.
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```ts
-const lunardate = client.Lunardate()
+const lunar_date = client.LunarDate()
 ```
 
 ### Fields
@@ -130,7 +130,7 @@ const lunardate = client.Lunardate()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Lunardate().load({ date: 'date' })
+const result = await client.LunarDate().load({ date: 'date' })
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `LunardateEntity` instance with the same client and
+Create a new `LunarDateEntity` instance with the same client and
 options.
 
 #### `client()`

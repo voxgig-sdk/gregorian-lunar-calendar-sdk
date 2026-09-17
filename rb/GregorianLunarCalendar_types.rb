@@ -8,7 +8,7 @@
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
 
-# Lunardate entity data model.
+# LunarDate entity data model.
 #
 # @!attribute [rw] day
 #   @return [String, nil]
@@ -27,7 +27,7 @@
 #
 # @!attribute [rw] zodiac
 #   @return [String, nil]
-Lunardate = Struct.new(
+LunarDate = Struct.new(
   :day,
   :isLeapMonth,
   :month,
@@ -37,11 +37,11 @@ Lunardate = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Lunardate#load.
+# Request payload for LunarDate#load.
 #
 # @!attribute [rw] date
 #   @return [String]
-LunardateLoadMatch = Struct.new(
+LunarDateLoadMatch = Struct.new(
   :date,
   keyword_init: true
 )

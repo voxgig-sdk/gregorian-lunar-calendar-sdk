@@ -5,7 +5,7 @@ guide: {
   metrics: count: path: 1
   metrics: count: method: 1
 
-  entity: lunardate: {
+  entity: lunar_date: {
     path: "/opendata/lunardate.php": {
       op: load: method: *GET
       op: load: transform: res: *("`body.lunarDate`")|top

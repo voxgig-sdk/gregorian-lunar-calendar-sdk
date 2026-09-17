@@ -12,8 +12,8 @@ declare(strict_types=1);
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
 
-/** Lunardate entity data model. */
-class Lunardate
+/** LunarDate entity data model. */
+class LunarDate
 {
     public ?string $day = null;
     public ?bool $isLeapMonth = null;
@@ -23,8 +23,8 @@ class Lunardate
     public ?string $zodiac = null;
 }
 
-/** Request payload for Lunardate#load. */
-class LunardateLoadMatch
+/** Request payload for LunarDate#load. */
+class LunarDateLoadMatch
 {
     public string $date;
 }

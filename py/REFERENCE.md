@@ -41,9 +41,9 @@ client = GregorianLunarCalendarSDK.test()
 
 ### Instance Methods
 
-#### `Lunardate(data=None)`
+#### `LunarDate(data=None)`
 
-Create a new `LunardateEntity` instance. Pass `None` for no initial data.
+Create a new `LunarDateEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -77,10 +77,10 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 ---
 
-## LunardateEntity
+## LunarDateEntity
 
 ```python
-lunardate = client.Lunardate()
+lunar_date = client.LunarDate()
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ lunardate = client.Lunardate()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Lunardate().load({"date": "date"})
+result = client.LunarDate().load({"date": "date"})
 ```
 
 ### Common Methods
@@ -124,7 +124,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `LunardateEntity` instance with the same options.
+Create a new `LunarDateEntity` instance with the same options.
 
 #### `get_name() -> str`
 

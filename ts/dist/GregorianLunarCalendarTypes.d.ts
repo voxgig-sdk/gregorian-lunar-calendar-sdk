@@ -1,4 +1,4 @@
-export interface Lunardate {
+export interface LunarDate {
     day?: string;
     isLeapMonth?: boolean;
     month?: string;
@@ -6,6 +6,6 @@ export interface Lunardate {
     yearCycle?: number;
     zodiac?: string;
 }
-export interface LunardateLoadMatch {
+export interface LunarDateLoadMatch {
     date: string;
 }

@@ -76,7 +76,7 @@ _CLIENT_VARS = ("client", "sdk")
 
 # The API's capitalised semantic entities -> lowercase fixture key.
 _ENTITIES = {
-    "Lunardate": "lunardate",
+    "LunarDate": "lunar_date",
 }
 
 # The three documents held to the gate, tagged by human label.

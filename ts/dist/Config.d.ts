@@ -69,11 +69,11 @@ declare class Config {
             "content-type": string;
         };
         entity: {
-            lunardate: {};
+            lunar_date: {};
         };
     };
     entity: {
-        lunardate: {
+        lunar_date: {
             fields: {
                 name: string;
                 short: string;
