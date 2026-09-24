@@ -1,0 +1,28 @@
+# BasicLunarDateFlow
+
+main: kit: flow: BasicLunarDateFlow:
+{
+  entity: "lunar_date",
+  kind: "basic",
+  name: "BasicLunarDateFlow",
+  step: [
+    {
+      i: {
+        ref: "lunar_date_ref01",
+        srcdatavar: "lunar_date_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-lunar_date_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLunarDateFlow"
+}

@@ -1,0 +1,101 @@
+# Entity: lunar_date
+
+main: kit: entity: lunar_date: {
+
+  alias: field: {}
+
+  fields: {
+    day: {
+      h: "Day"
+      n: "day"
+      r: false
+      sh: "Lunar day in Chinese"
+      t: "`$STRING`"
+    }
+    isLeapMonth: {
+      h: "Is Leap Month"
+      n: "isLeapMonth"
+      r: false
+      sh: "Indicates if the lunar month is a leap month"
+      t: "`$BOOLEAN`"
+    }
+    month: {
+      h: "Month"
+      n: "month"
+      r: false
+      sh: "Lunar month in Chinese"
+      t: "`$STRING`"
+    }
+    year: {
+      h: "Year"
+      n: "year"
+      r: false
+      sh: "Lunar year in Chinese Heavenly Stems and Earthly Branches"
+      t: "`$STRING`"
+    }
+    yearCycle: {
+      h: "Year Cycle"
+      n: "yearCycle"
+      r: false
+      sh: "Year in the 60-year cycle"
+      t: "`$INTEGER`"
+    }
+    zodiac: {
+      h: "Zodiac"
+      n: "zodiac"
+      r: false
+      sh: "Chinese zodiac animal"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "lunar_date"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /opendata/lunardate.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "20240101"
+                k: "query"
+                n: "date"
+                or: "date"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/opendata/lunardate.php"
+          q: {
+            exist: [
+              "date"
+            ]
+          }
+          s: [
+            {
+              lit: "opendata"
+            }
+            {
+              lit: "lunardate.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.lunarDate`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

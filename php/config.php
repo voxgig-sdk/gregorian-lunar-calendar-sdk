@@ -113,33 +113,39 @@ class GregorianLunarCalendarConfig
           'fields' => [
             [
               'name' => 'day',
-              'short' => 'Lunar day in Chinese',
+              'title' => 'Day',
               'type' => '`$STRING`',
+              'short' => 'Lunar day in Chinese',
             ],
             [
               'name' => 'isLeapMonth',
-              'short' => 'Indicates if the lunar month is a leap month',
+              'title' => 'Is Leap Month',
               'type' => '`$BOOLEAN`',
+              'short' => 'Indicates if the lunar month is a leap month',
             ],
             [
               'name' => 'month',
-              'short' => 'Lunar month in Chinese',
+              'title' => 'Month',
               'type' => '`$STRING`',
+              'short' => 'Lunar month in Chinese',
             ],
             [
               'name' => 'year',
-              'short' => 'Lunar year in Chinese Heavenly Stems and Earthly Branches',
+              'title' => 'Year',
               'type' => '`$STRING`',
+              'short' => 'Lunar year in Chinese Heavenly Stems and Earthly Branches',
             ],
             [
               'name' => 'yearCycle',
-              'short' => 'Year in the 60-year cycle',
+              'title' => 'Year Cycle',
               'type' => '`$INTEGER`',
+              'short' => 'Year in the 60-year cycle',
             ],
             [
               'name' => 'zodiac',
-              'short' => 'Chinese zodiac animal',
+              'title' => 'Zodiac',
               'type' => '`$STRING`',
+              'short' => 'Chinese zodiac animal',
             ],
           ],
           'name' => 'lunar_date',
@@ -149,18 +155,6 @@ class GregorianLunarCalendarConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '20240101',
-                        'kind' => 'query',
-                        'name' => 'date',
-                        'orig' => 'date',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/opendata/lunardate.php',
@@ -172,18 +166,31 @@ class GregorianLunarCalendarConfig
                       'lit' => 'lunardate.php',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'date',
-                    ],
+                  'parts' => [
+                    'opendata',
+                    'lunardate.php',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.lunarDate`',
                   ],
-                  'parts' => [
-                    'opendata',
-                    'lunardate.php',
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'date',
+                        'orig' => 'date',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => '20240101',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'date',
+                    ],
                   ],
                 ],
               ],

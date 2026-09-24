@@ -91,33 +91,39 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "day",
-						"short": "Lunar day in Chinese",
+						"title": "Day",
 						"type": "`$STRING`",
+						"short": "Lunar day in Chinese",
 					},
 					map[string]any{
 						"name": "isLeapMonth",
-						"short": "Indicates if the lunar month is a leap month",
+						"title": "Is Leap Month",
 						"type": "`$BOOLEAN`",
+						"short": "Indicates if the lunar month is a leap month",
 					},
 					map[string]any{
 						"name": "month",
-						"short": "Lunar month in Chinese",
+						"title": "Month",
 						"type": "`$STRING`",
+						"short": "Lunar month in Chinese",
 					},
 					map[string]any{
 						"name": "year",
-						"short": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
+						"title": "Year",
 						"type": "`$STRING`",
+						"short": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
 					},
 					map[string]any{
 						"name": "yearCycle",
-						"short": "Year in the 60-year cycle",
+						"title": "Year Cycle",
 						"type": "`$INTEGER`",
+						"short": "Year in the 60-year cycle",
 					},
 					map[string]any{
 						"name": "zodiac",
-						"short": "Chinese zodiac animal",
+						"title": "Zodiac",
 						"type": "`$STRING`",
+						"short": "Chinese zodiac animal",
 					},
 				},
 				"name": "lunar_date",
@@ -127,18 +133,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "20240101",
-											"kind": "query",
-											"name": "date",
-											"orig": "date",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/opendata/lunardate.php",
@@ -150,18 +144,31 @@ func MakeConfig() map[string]any {
 										"lit": "lunardate.php",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"date",
-									},
+								"parts": []any{
+									"opendata",
+									"lunardate.php",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.lunarDate`",
 								},
-								"parts": []any{
-									"opendata",
-									"lunardate.php",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "date",
+											"orig": "date",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "20240101",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"date",
+									},
 								},
 							},
 						},

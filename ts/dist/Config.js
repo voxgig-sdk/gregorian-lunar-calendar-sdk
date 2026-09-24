@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,33 +107,39 @@ class Config {
             "fields": [
                 {
                     "name": "day",
-                    "short": "Lunar day in Chinese",
-                    "type": "`$STRING`"
+                    "title": "Day",
+                    "type": "`$STRING`",
+                    "short": "Lunar day in Chinese"
                 },
                 {
                     "name": "isLeapMonth",
-                    "short": "Indicates if the lunar month is a leap month",
-                    "type": "`$BOOLEAN`"
+                    "title": "Is Leap Month",
+                    "type": "`$BOOLEAN`",
+                    "short": "Indicates if the lunar month is a leap month"
                 },
                 {
                     "name": "month",
-                    "short": "Lunar month in Chinese",
-                    "type": "`$STRING`"
+                    "title": "Month",
+                    "type": "`$STRING`",
+                    "short": "Lunar month in Chinese"
                 },
                 {
                     "name": "year",
-                    "short": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
-                    "type": "`$STRING`"
+                    "title": "Year",
+                    "type": "`$STRING`",
+                    "short": "Lunar year in Chinese Heavenly Stems and Earthly Branches"
                 },
                 {
                     "name": "yearCycle",
-                    "short": "Year in the 60-year cycle",
-                    "type": "`$INTEGER`"
+                    "title": "Year Cycle",
+                    "type": "`$INTEGER`",
+                    "short": "Year in the 60-year cycle"
                 },
                 {
                     "name": "zodiac",
-                    "short": "Chinese zodiac animal",
-                    "type": "`$STRING`"
+                    "title": "Zodiac",
+                    "type": "`$STRING`",
+                    "short": "Chinese zodiac animal"
                 }
             ],
             "name": "lunar_date",
@@ -150,18 +149,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "20240101",
-                                        "kind": "query",
-                                        "name": "date",
-                                        "orig": "date",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/opendata/lunardate.php",
@@ -173,19 +160,32 @@ class Config {
                                     "lit": "lunardate.php"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "date"
-                                ]
-                            },
+                            "parts": [
+                                "opendata",
+                                "lunardate.php"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.lunarDate`"
                             },
-                            "parts": [
-                                "opendata",
-                                "lunardate.php"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "date",
+                                        "orig": "date",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "20240101"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "date"
+                                ]
+                            }
                         }
                     ]
                 }

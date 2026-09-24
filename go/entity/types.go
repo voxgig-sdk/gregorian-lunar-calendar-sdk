@@ -1,7 +1,7 @@
 // Typed models for the GregorianLunarCalendar SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,12 +14,6 @@ import (
 
 // LunarDate is the typed data model for the lunar_date entity.
 type LunarDate struct {
-	Day *string `json:"day,omitempty"`
-	IsLeapMonth *bool `json:"isLeapMonth,omitempty"`
-	Month *string `json:"month,omitempty"`
-	Year *string `json:"year,omitempty"`
-	YearCycle *int `json:"yearCycle,omitempty"`
-	Zodiac *string `json:"zodiac,omitempty"`
 }
 
 // LunarDateLoadMatch is the typed request payload for LunarDate.LoadTyped.
