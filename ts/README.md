@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk
+npm install ./gregorian-lunar-calendar-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -290,12 +294,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `day` | Lunar day in Chinese |
-| `isLeapMonth` | Indicates if the lunar month is a leap month |
-| `month` | Lunar month in Chinese |
-| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | Year in the 60-year cycle |
-| `zodiac` | Chinese zodiac animal |
+| `gregorianDate` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | Lunar calendar date information |
 
 Operations: load.
 
@@ -320,12 +320,8 @@ Create an instance: `const lunar_date = client.LunarDate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` | Lunar day in Chinese |
-| `isLeapMonth` | `boolean` | Indicates if the lunar month is a leap month |
-| `month` | `string` | Lunar month in Chinese |
-| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | `number` | Year in the 60-year cycle |
-| `zodiac` | `string` | Chinese zodiac animal |
+| `gregorianDate` | `string` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | `Record<string, any>` | Lunar calendar date information |
 
 #### Example: Load
 

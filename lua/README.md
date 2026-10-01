@@ -225,12 +225,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `day` | Lunar day in Chinese |
-| `isLeapMonth` | Indicates if the lunar month is a leap month |
-| `month` | Lunar month in Chinese |
-| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | Year in the 60-year cycle |
-| `zodiac` | Chinese zodiac animal |
+| `gregorianDate` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | Lunar calendar date information |
 
 Operations: Load.
 
@@ -255,12 +251,8 @@ Create an instance: `local lunar_date = client:LunarDate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` | Lunar day in Chinese |
-| `isLeapMonth` | `boolean` | Indicates if the lunar month is a leap month |
-| `month` | `string` | Lunar month in Chinese |
-| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | `number` | Year in the 60-year cycle |
-| `zodiac` | `string` | Chinese zodiac animal |
+| `gregorianDate` | `string` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | `table` | Lunar calendar date information |
 
 #### Example: Load
 

@@ -6,12 +6,8 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface LunarDate {
-  day?: string
-  isLeapMonth?: boolean
-  month?: string
-  year?: string
-  yearCycle?: number
-  zodiac?: string
+  gregorianDate: string
+  lunarDate: Record<string, any>
 }
 
 export interface LunarDateLoadMatch {

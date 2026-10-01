@@ -10,30 +10,14 @@
 
 # LunarDate entity data model.
 #
-# @!attribute [rw] day
-#   @return [String, nil]
+# @!attribute [rw] gregorianDate
+#   @return [String]
 #
-# @!attribute [rw] isLeapMonth
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] month
-#   @return [String, nil]
-#
-# @!attribute [rw] year
-#   @return [String, nil]
-#
-# @!attribute [rw] yearCycle
-#   @return [Integer, nil]
-#
-# @!attribute [rw] zodiac
-#   @return [String, nil]
+# @!attribute [rw] lunarDate
+#   @return [Hash]
 LunarDate = Struct.new(
-  :day,
-  :isLeapMonth,
-  :month,
-  :year,
-  :yearCycle,
-  :zodiac,
+  :gregorianDate,
+  :lunarDate,
   keyword_init: true
 )
 

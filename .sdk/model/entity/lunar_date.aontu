@@ -5,47 +5,20 @@ main: kit: entity: lunar_date: {
   alias: field: {}
 
   fields: {
-    day: {
-      h: "Day"
-      n: "day"
-      r: false
-      sh: "Lunar day in Chinese"
+    gregorianDate: {
+      fo: "date"
+      h: "Gregorian Date"
+      n: "gregorianDate"
+      r: true
+      sh: "The Gregorian date in YYYY-MM-DD format"
       t: "`$STRING`"
     }
-    isLeapMonth: {
-      h: "Is Leap Month"
-      n: "isLeapMonth"
-      r: false
-      sh: "Indicates if the lunar month is a leap month"
-      t: "`$BOOLEAN`"
-    }
-    month: {
-      h: "Month"
-      n: "month"
-      r: false
-      sh: "Lunar month in Chinese"
-      t: "`$STRING`"
-    }
-    year: {
-      h: "Year"
-      n: "year"
-      r: false
-      sh: "Lunar year in Chinese Heavenly Stems and Earthly Branches"
-      t: "`$STRING`"
-    }
-    yearCycle: {
-      h: "Year Cycle"
-      n: "yearCycle"
-      r: false
-      sh: "Year in the 60-year cycle"
-      t: "`$INTEGER`"
-    }
-    zodiac: {
-      h: "Zodiac"
-      n: "zodiac"
-      r: false
-      sh: "Chinese zodiac animal"
-      t: "`$STRING`"
+    lunarDate: {
+      h: "Lunar Date"
+      n: "lunarDate"
+      r: true
+      sh: "Lunar calendar date information"
+      t: "`$OBJECT`"
     }
   }
 
@@ -89,7 +62,7 @@ main: kit: entity: lunar_date: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.lunarDate`"
+            res: "`body`"
           }
         }
       ]

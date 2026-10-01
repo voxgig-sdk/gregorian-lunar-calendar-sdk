@@ -7,12 +7,8 @@
 -- edit by hand.
 
 ---@class LunarDate
----@field day? string
----@field isLeapMonth? boolean
----@field month? string
----@field year? string
----@field yearCycle? number
----@field zodiac? string
+---@field gregorianDate string
+---@field lunarDate table
 
 ---@class LunarDateLoadMatch
 ---@field date string

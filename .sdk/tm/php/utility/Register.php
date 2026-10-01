@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 GregorianLunarCalendarUtility::setRegistrar(function (GregorianLunarCalendarUtility $u): void {
     $u->clean = [GregorianLunarCalendarClean::class, 'call'];
+    $u->clean_add = [GregorianLunarCalendarClean::class, 'add'];
+    $u->clean_explain = [GregorianLunarCalendarDone::class, 'clean_explain'];
     $u->done = [GregorianLunarCalendarDone::class, 'call'];
     $u->make_error = [GregorianLunarCalendarMakeError::class, 'call'];
     $u->feature_add = [GregorianLunarCalendarFeatureAdd::class, 'call'];

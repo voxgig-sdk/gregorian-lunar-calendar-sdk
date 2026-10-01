@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 GregorianLunarCalendarUtility.registrar = ->(u) {
   u.clean = GregorianLunarCalendarUtilities::Clean
+  u.clean_add = GregorianLunarCalendarUtilities::CleanAdd
+  u.clean_explain = GregorianLunarCalendarUtilities::CleanExplain
   u.done = GregorianLunarCalendarUtilities::Done
   u.make_error = GregorianLunarCalendarUtilities::MakeError
   u.feature_add = GregorianLunarCalendarUtilities::FeatureAdd

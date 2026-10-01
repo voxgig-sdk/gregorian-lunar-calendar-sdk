@@ -20,11 +20,8 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
-- `day`: Lunar day in Chinese
-- `isLeapMonth`: Indicates if the lunar month is a leap month
-- `month`: Lunar month in Chinese
-- `year`: Lunar year in Chinese Heavenly Stems and Earthly Branches
-- `yearCycle`: Year in the 60-year cycle
+- `gregorianDate`: The Gregorian date in YYYY-MM-DD format
+- `lunarDate`: Lunar calendar date information
 
 ### Route map
 

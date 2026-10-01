@@ -74,12 +74,21 @@ declare class Config {
     };
     entity: {
         lunar_date: {
-            fields: {
+            fields: ({
                 name: string;
                 title: string;
                 type: string;
+                req: boolean;
                 short: string;
-            }[];
+                format: string;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                req: boolean;
+                short: string;
+                format?: undefined;
+            })[];
             name: string;
             op: {
                 load: {

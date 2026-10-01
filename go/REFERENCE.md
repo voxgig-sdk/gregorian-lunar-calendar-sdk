@@ -98,12 +98,8 @@ fmt.Println(lunarDate.GetName()) // "lunar_date"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `day` | `string` | No | Lunar day in Chinese |
-| `isLeapMonth` | `bool` | No | Indicates if the lunar month is a leap month |
-| `month` | `string` | No | Lunar month in Chinese |
-| `year` | `string` | No | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | `int` | No | Year in the 60-year cycle |
-| `zodiac` | `string` | No | Chinese zodiac animal |
+| `gregorianDate` | `string` | Yes | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | `map[string]any` | Yes | Lunar calendar date information |
 
 ### Operations
 

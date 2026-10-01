@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-gregorian-lunar-calendar-sdk", path: "./gregorian-lunar-calendar-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -235,12 +244,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `day` | Lunar day in Chinese |
-| `isLeapMonth` | Indicates if the lunar month is a leap month |
-| `month` | Lunar month in Chinese |
-| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | Year in the 60-year cycle |
-| `zodiac` | Chinese zodiac animal |
+| `gregorianDate` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | Lunar calendar date information |
 
 Operations: Load.
 
@@ -265,12 +270,8 @@ Create an instance: `lunar_date = client.LunarDate`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `String` | Lunar day in Chinese |
-| `isLeapMonth` | `Boolean` | Indicates if the lunar month is a leap month |
-| `month` | `String` | Lunar month in Chinese |
-| `year` | `String` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | `Integer` | Year in the 60-year cycle |
-| `zodiac` | `String` | Chinese zodiac animal |
+| `gregorianDate` | `String` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | `Hash` | Lunar calendar date information |
 
 #### Example: Load
 

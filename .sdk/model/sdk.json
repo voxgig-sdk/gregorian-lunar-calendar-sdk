@@ -97,53 +97,22 @@
             "field": {}
           },
           "fields": {
-            "day": {
+            "gregorianDate": {
               "a": true,
-              "h": "Day",
-              "n": "day",
-              "r": false,
-              "sh": "Lunar day in Chinese",
+              "fo": "date",
+              "h": "Gregorian Date",
+              "n": "gregorianDate",
+              "r": true,
+              "sh": "The Gregorian date in YYYY-MM-DD format",
               "t": "`$STRING`"
             },
-            "isLeapMonth": {
+            "lunarDate": {
               "a": true,
-              "h": "Is Leap Month",
-              "n": "isLeapMonth",
-              "r": false,
-              "sh": "Indicates if the lunar month is a leap month",
-              "t": "`$BOOLEAN`"
-            },
-            "month": {
-              "a": true,
-              "h": "Month",
-              "n": "month",
-              "r": false,
-              "sh": "Lunar month in Chinese",
-              "t": "`$STRING`"
-            },
-            "year": {
-              "a": true,
-              "h": "Year",
-              "n": "year",
-              "r": false,
-              "sh": "Lunar year in Chinese Heavenly Stems and Earthly Branches",
-              "t": "`$STRING`"
-            },
-            "yearCycle": {
-              "a": true,
-              "h": "Year Cycle",
-              "n": "yearCycle",
-              "r": false,
-              "sh": "Year in the 60-year cycle",
-              "t": "`$INTEGER`"
-            },
-            "zodiac": {
-              "a": true,
-              "h": "Zodiac",
-              "n": "zodiac",
-              "r": false,
-              "sh": "Chinese zodiac animal",
-              "t": "`$STRING`"
+              "h": "Lunar Date",
+              "n": "lunarDate",
+              "r": true,
+              "sh": "Lunar calendar date information",
+              "t": "`$OBJECT`"
             }
           },
           "name": "lunar_date",
@@ -191,7 +160,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.lunarDate`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -683,7 +652,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

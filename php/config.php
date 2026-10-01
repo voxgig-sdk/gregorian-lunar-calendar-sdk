@@ -112,40 +112,19 @@ class GregorianLunarCalendarConfig
         'lunar_date' => [
           'fields' => [
             [
-              'name' => 'day',
-              'title' => 'Day',
+              'name' => 'gregorianDate',
+              'title' => 'Gregorian Date',
               'type' => '`$STRING`',
-              'short' => 'Lunar day in Chinese',
+              'req' => true,
+              'short' => 'The Gregorian date in YYYY-MM-DD format',
+              'format' => 'date',
             ],
             [
-              'name' => 'isLeapMonth',
-              'title' => 'Is Leap Month',
-              'type' => '`$BOOLEAN`',
-              'short' => 'Indicates if the lunar month is a leap month',
-            ],
-            [
-              'name' => 'month',
-              'title' => 'Month',
-              'type' => '`$STRING`',
-              'short' => 'Lunar month in Chinese',
-            ],
-            [
-              'name' => 'year',
-              'title' => 'Year',
-              'type' => '`$STRING`',
-              'short' => 'Lunar year in Chinese Heavenly Stems and Earthly Branches',
-            ],
-            [
-              'name' => 'yearCycle',
-              'title' => 'Year Cycle',
-              'type' => '`$INTEGER`',
-              'short' => 'Year in the 60-year cycle',
-            ],
-            [
-              'name' => 'zodiac',
-              'title' => 'Zodiac',
-              'type' => '`$STRING`',
-              'short' => 'Chinese zodiac animal',
+              'name' => 'lunarDate',
+              'title' => 'Lunar Date',
+              'type' => '`$OBJECT`',
+              'req' => true,
+              'short' => 'Lunar calendar date information',
             ],
           ],
           'name' => 'lunar_date',
@@ -173,7 +152,7 @@ class GregorianLunarCalendarConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.lunarDate`',
+                    'res' => '`body`',
                   ],
                   'args' => [
                     'query' => [

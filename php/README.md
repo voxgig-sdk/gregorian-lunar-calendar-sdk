@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases](https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/gregorian-lunar-calendar-sdk
+composer config repositories.gregorian-lunar-calendar-sdk path ./gregorian-lunar-calendar-sdk/php
+composer require voxgig-sdk/gregorian-lunar-calendar-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -245,12 +250,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `day` | Lunar day in Chinese |
-| `isLeapMonth` | Indicates if the lunar month is a leap month |
-| `month` | Lunar month in Chinese |
-| `year` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | Year in the 60-year cycle |
-| `zodiac` | Chinese zodiac animal |
+| `gregorianDate` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | Lunar calendar date information |
 
 Operations: Load.
 
@@ -275,12 +276,8 @@ Create an instance: `$lunar_date = $client->LunarDate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `day` | `string` | Lunar day in Chinese |
-| `isLeapMonth` | `bool` | Indicates if the lunar month is a leap month |
-| `month` | `string` | Lunar month in Chinese |
-| `year` | `string` | Lunar year in Chinese Heavenly Stems and Earthly Branches |
-| `yearCycle` | `int` | Year in the 60-year cycle |
-| `zodiac` | `string` | Chinese zodiac animal |
+| `gregorianDate` | `string` | The Gregorian date in YYYY-MM-DD format |
+| `lunarDate` | `array` | Lunar calendar date information |
 
 #### Example: Load
 
