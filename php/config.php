@@ -93,6 +93,7 @@ class GregorianLunarCalendarConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -170,6 +171,10 @@ class GregorianLunarCalendarConfig
                     'exist' => [
                       'date',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

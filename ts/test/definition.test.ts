@@ -19,8 +19,18 @@ const PLAN: any[] = [
       "date": "20240101"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "date"
+    ],
+    "queryArgs": [
+      {
+        "name": "date",
+        "wire": "date"
+      }
     ],
     "auth": null,
     "status": 200,

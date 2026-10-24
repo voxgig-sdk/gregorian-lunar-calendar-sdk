@@ -52,6 +52,10 @@ main: kit: entity: lunar_date: {
               "date"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "opendata"

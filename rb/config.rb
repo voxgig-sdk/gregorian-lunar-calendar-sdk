@@ -79,6 +79,7 @@ module GregorianLunarCalendarConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -156,6 +157,10 @@ module GregorianLunarCalendarConfig
                     "exist" => [
                       "date",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

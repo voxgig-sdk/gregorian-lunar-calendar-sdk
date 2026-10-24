@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.LunarDate();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.GregorianLunarCalendarSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.LunarDate().load({ "date": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GREGORIAN_LUNAR_CALENDAR_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "gregorianDate": { "a": true, "fo": "date", "h": "Gregorian Date", "n": "gregorianDate", "r": true, "sh": "The Gregorian date in YYYY-MM-DD format", "t": "`$STRING`", "key$": "gregorianDate", "index$": 0 }, "lunarDate": { "a": true, "h": "Lunar Date", "n": "lunarDate", "r": true, "sh": "Lunar calendar date information", "t": "`$OBJECT`", "key$": "lunarDate", "index$": 1 } }, "name": "lunar_date", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /opendata/lunardate.php", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "20240101", "k": "query", "n": "date", "or": "date", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/opendata/lunardate.php", "q": { "exist": ["date"] }, "r": {}, "s": [{ "lit": "opendata" }, { "lit": "lunardate.php" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "lunar_date", "name__orig": "lunar_date", "Name": "LunarDate", "name_": "lunar_date", "name-": "lunar-date", "NAME": "LUNAR_DATE", "index$": 0 }, { "active": true, "entity": "lunar_date", "key$": "BasicLunarDateFlow", "kind": "basic", "name": "BasicLunarDateFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "lunar_date_ref01", "srcdatavar": "lunar_date_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-lunar_date_ref01" } }], "index$": 0 }] }, 'LunarDate', { "GET /opendata/lunardate.php": { "protocol": "http", "parameters": [{ "name": "date", "in": "query", "description": "Gregorian date in YYYYMMDD format", "required": true, "schema": { "type": "string", "pattern": "^[0-9]{8}$", "example": "20240101" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "gregorianDate": { "a": true, "fo": "date", "h": "Gregorian Date", "n": "gregorianDate", "r": true, "sh": "The Gregorian date in YYYY-MM-DD format", "t": "`$STRING`", "key$": "gregorianDate", "index$": 0 }, "lunarDate": { "a": true, "h": "Lunar Date", "n": "lunarDate", "r": true, "sh": "Lunar calendar date information", "t": "`$OBJECT`", "key$": "lunarDate", "index$": 1 } }, "name": "lunar_date", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /opendata/lunardate.php", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "20240101", "k": "query", "n": "date", "or": "date", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/opendata/lunardate.php", "q": { "exist": ["date"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "opendata" }, { "lit": "lunardate.php" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "lunar_date", "name__orig": "lunar_date", "Name": "LunarDate", "name_": "lunar_date", "name-": "lunar-date", "NAME": "LUNAR_DATE", "index$": 0 }, { "active": true, "entity": "lunar_date", "key$": "BasicLunarDateFlow", "kind": "basic", "name": "BasicLunarDateFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "lunar_date_ref01", "srcdatavar": "lunar_date_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-lunar_date_ref01" } }], "index$": 0 }] }, 'LunarDate', { "GET /opendata/lunardate.php": { "protocol": "http", "parameters": [{ "name": "date", "in": "query", "description": "Gregorian date in YYYYMMDD format", "required": true, "schema": { "type": "string", "pattern": "^[0-9]{8}$", "example": "20240101" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != lunar_date_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

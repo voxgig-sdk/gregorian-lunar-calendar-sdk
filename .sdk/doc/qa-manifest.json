@@ -3,5 +3,14 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Hong Kong Observatory Weather API",
+      "Lunar calendar date information",
+      "Successful response with Lunar date information",
+      "The Gregorian date in YYYY-MM-DD format",
+      "This API provides conversion between Gregorian and Lunar dates. Users can fetch the Lunar date corresponding to a specified Gregorian date through a simple query."
+    ]
+  }
 }
